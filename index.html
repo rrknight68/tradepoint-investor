@@ -9,9 +9,7 @@
   :root {
     --navy:   #0D2B4E;
     --navy-dk:#071D35;
-    --navy-md:#163A62;
     --gold:   #C89A3A;
-    --gold-lt:#E8C97A;
     --gold-dk:#9E7720;
     --cream:  #F9F7F3;
     --cream-dk:#F0EDE6;
@@ -29,22 +27,27 @@
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--navy); min-height: 100vh; padding: 2rem 1.5rem 4rem; }
   .serif { font-family: 'Cormorant Garamond', serif; }
+  .mono  { font-family: 'DM Mono', monospace; }
+
   .page-header { margin-bottom: 2.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border-gold); }
   .breadcrumb { font-size: 11px; letter-spacing: 0.08em; color: var(--slate); text-transform: uppercase; margin-bottom: 0.75rem; font-family: 'DM Mono', monospace; }
   .breadcrumb span { color: var(--gold); }
   .page-title { font-family: 'Cormorant Garamond', serif; font-size: 2.2rem; font-weight: 500; color: var(--navy); line-height: 1.15; margin-bottom: 0.4rem; }
   .page-subtitle { font-size: 13px; color: var(--slate); font-family: 'DM Mono', monospace; }
+
   .stats-row { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 4px; overflow: hidden; margin-bottom: 2rem; }
   .stat-cell { background: var(--cream); padding: 1rem 1.25rem; transition: background 0.15s; }
   .stat-cell:hover { background: var(--cream-dk); }
   .stat-label { font-size: 10px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--slate); font-family: 'DM Mono', monospace; margin-bottom: 0.35rem; }
   .stat-value { font-family: 'DM Mono', monospace; font-size: 1.3rem; font-weight: 500; color: var(--navy); line-height: 1; }
-  .stat-value.gold { color: var(--gold-dk); }
+  .stat-value.gold  { color: var(--gold-dk); }
   .stat-value.green { color: var(--green-dk); }
   .stat-sub { font-size: 10px; color: var(--slate-lt); margin-top: 0.2rem; font-family: 'DM Mono', monospace; }
+
   .section { margin-bottom: 2.5rem; }
   .section-title { font-family: 'Cormorant Garamond', serif; font-size: 1.25rem; font-weight: 500; color: var(--navy); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.6rem; }
   .section-title::after { content: ''; flex: 1; height: 1px; background: var(--border-gold); }
+
   .options-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin-bottom: 2rem; }
   .option-card { border: 1px solid var(--border); border-radius: 4px; overflow: hidden; background: white; transition: box-shadow 0.2s; }
   .option-card:hover { box-shadow: 0 4px 24px rgba(13,43,78,0.08); }
@@ -58,17 +61,19 @@
   .tag-amber { background: var(--amber-lt); color: var(--amber); }
   .tag-green { background: rgba(255,255,255,0.15); color: white; border: 1px solid rgba(255,255,255,0.3); }
   .option-body { padding: 1.25rem; }
+
   .tranche { border: 1px solid var(--border); border-radius: 3px; margin-bottom: 0.75rem; overflow: hidden; }
   .tranche-header { padding: 0.5rem 0.875rem; font-size: 10px; letter-spacing: 0.07em; text-transform: uppercase; font-family: 'DM Mono', monospace; font-weight: 500; }
   .tranche-header.navy { background: var(--navy); color: var(--gold); }
   .tranche-header.green { background: var(--green-lt); color: var(--green-dk); }
-  .tranche-header.gold { background: #FDF6E8; color: var(--gold-dk); }
+  .tranche-header.gold  { background: #FDF6E8; color: var(--gold-dk); }
   .tranche-row { display: flex; justify-content: space-between; align-items: baseline; padding: 0.45rem 0.875rem; border-top: 1px solid var(--border); font-size: 12px; }
   .tr-label { color: var(--slate); }
   .tr-val { font-family: 'DM Mono', monospace; font-weight: 500; color: var(--navy); }
   .tr-val.green { color: var(--green-dk); }
-  .tr-val.gold { color: var(--gold-dk); }
+  .tr-val.gold  { color: var(--gold-dk); }
   .tr-val.slate { color: var(--slate); }
+
   .metrics-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 0.625rem; margin-top: 1rem; }
   .metric-box { background: var(--cream); border: 1px solid var(--border); border-radius: 3px; padding: 0.875rem 1rem; text-align: center; }
   .metric-box.highlight { background: var(--green-lt); border-color: rgba(29,158,117,0.3); }
@@ -76,10 +81,12 @@
   .m-val.green { color: var(--green-dk); }
   .m-val.amber { color: var(--amber); }
   .m-label { font-size: 10px; color: var(--slate); font-family: 'DM Mono', monospace; text-transform: uppercase; letter-spacing: 0.05em; }
+
   .insight { border-left: 3px solid var(--gold); background: white; padding: 1rem 1.25rem; border-radius: 0 3px 3px 0; margin-bottom: 1.25rem; }
   .insight-title { font-family: 'Cormorant Garamond', serif; font-size: 1rem; font-weight: 600; color: var(--navy); margin-bottom: 0.4rem; }
   .insight-text { font-size: 12.5px; color: var(--slate); line-height: 1.65; }
   .insight-text strong { color: var(--navy); }
+
   .waterfall { border: 1px solid var(--border); border-radius: 4px; overflow: hidden; }
   .wf-tier { display: flex; align-items: stretch; border-bottom: 1px solid var(--border); }
   .wf-tier:last-child { border-bottom: none; }
@@ -87,13 +94,42 @@
   .wf-content { flex: 1; padding: 0.875rem 1rem; }
   .wf-label { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 0.2rem; }
   .wf-title { font-size: 13px; font-weight: 500; color: var(--navy); margin-bottom: 0.1rem; }
-  .wf-note { font-size: 11px; color: var(--slate); }
+  .wf-note  { font-size: 11px; color: var(--slate); }
   .wf-val { font-family: 'DM Mono', monospace; font-size: 1.1rem; font-weight: 500; padding: 0.875rem 1rem; display: flex; align-items: center; white-space: nowrap; }
   .wf-total { background: var(--navy); padding: 0.875rem 1rem; display: flex; justify-content: space-between; align-items: center; }
   .wf-total-label { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(255,255,255,0.6); }
   .wf-total-val { font-family: 'DM Mono', monospace; font-size: 1.3rem; font-weight: 500; color: var(--gold); }
+
+  .phase-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 4px; overflow: hidden; }
+  .phase-cell { background: white; padding: 1rem 1.25rem; }
+  .phase-accent { width: 100%; height: 3px; border-radius: 1px; margin-bottom: 0.75rem; }
+  .phase-num { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--slate-lt); margin-bottom: 0.25rem; }
+  .phase-name { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 500; color: var(--navy); margin-bottom: 0.5rem; }
+  .phase-detail { font-size: 11px; color: var(--slate); font-family: 'DM Mono', monospace; line-height: 1.7; }
+  .phase-detail strong { color: var(--navy); }
+
+  .strengths-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 4px; overflow: hidden; }
+  .strength-cell { background: white; padding: 1rem 1.25rem; display: flex; gap: 0.875rem; align-items: flex-start; }
+  .s-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--green); margin-top: 5px; flex-shrink: 0; }
+  .s-title { font-size: 12px; font-weight: 500; color: var(--navy); margin-bottom: 0.2rem; }
+  .s-text  { font-size: 11px; color: var(--slate); line-height: 1.55; }
+
+  .cta-band { background: var(--navy); border-radius: 4px; padding: 1.75rem 2rem; display: flex; justify-content: space-between; align-items: center; gap: 2rem; margin-top: 2rem; }
+  .cta-eyebrow { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.4rem; }
+  .cta-title { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 500; color: white; line-height: 1.2; }
+  .cta-contact { font-family: 'DM Mono', monospace; font-size: 12px; color: rgba(255,255,255,0.55); line-height: 1.8; text-align: right; }
+  .cta-contact strong { color: white; }
+
   .footnote { font-size: 11px; color: var(--slate-lt); font-family: 'DM Mono', monospace; margin-top: 2.5rem; padding-top: 1rem; border-top: 1px solid var(--border); line-height: 1.7; }
-  @media (max-width: 768px) { .options-grid { grid-template-columns: 1fr; } .stats-row { grid-template-columns: repeat(3,1fr); } }
+
+  @media (max-width: 768px) {
+    .options-grid { grid-template-columns: 1fr; }
+    .stats-row { grid-template-columns: repeat(3,1fr); }
+    .phase-row { grid-template-columns: 1fr; }
+    .strengths-grid { grid-template-columns: 1fr; }
+    .cta-band { flex-direction: column; }
+    .cta-contact { text-align: left; }
+  }
 </style>
 </head>
 <body>
@@ -105,28 +141,57 @@
 </div>
 
 <div class="stats-row">
-  <div class="stat-cell"><div class="stat-label">Total Raise</div><div class="stat-value mono">$8.35M</div><div class="stat-sub">one tranche at close</div></div>
-  <div class="stat-cell"><div class="stat-label">Net Project Profit</div><div class="stat-value green mono">$9.92M</div><div class="stat-sub">28.4% margin</div></div>
-  <div class="stat-cell"><div class="stat-label">Equity IRR (Opt A)</div><div class="stat-value mono" style="color:var(--amber)">24.0%</div><div class="stat-sub">full equity structure</div></div>
-  <div class="stat-cell"><div class="stat-label">Equity IRR (Opt B)</div><div class="stat-value green mono">35.4%</div><div class="stat-sub">hybrid pref + equity</div></div>
-  <div class="stat-cell"><div class="stat-label">Hold Period</div><div class="stat-value mono">31 mo</div><div class="stat-sub">absorption-driven exit</div></div>
+  <div class="stat-cell">
+    <div class="stat-label">Gross Revenue</div>
+    <div class="stat-value gold mono">$34.88M</div>
+    <div class="stat-sub">98,264 SF · 38 units</div>
+  </div>
+  <div class="stat-cell">
+    <div class="stat-label">Net Project Profit</div>
+    <div class="stat-value green mono">$9.92M</div>
+    <div class="stat-sub">28.4% margin</div>
+  </div>
+  <div class="stat-cell">
+    <div class="stat-label">Equity IRR (Option A)</div>
+    <div class="stat-value mono" style="color:var(--amber)">24.0%</div>
+    <div class="stat-sub">full equity · 1.74×</div>
+  </div>
+  <div class="stat-cell">
+    <div class="stat-label">Equity IRR (Option B)</div>
+    <div class="stat-value green mono">35.4%</div>
+    <div class="stat-sub">pref + equity · 2.19×</div>
+  </div>
+  <div class="stat-cell">
+    <div class="stat-label">Hold Period</div>
+    <div class="stat-value mono">31 mo</div>
+    <div class="stat-sub">absorption-driven exit</div>
+  </div>
 </div>
 
 <div class="insight">
-  <div class="insight-title">The core trade-off</div>
-  <div class="insight-text">Splitting the $8.35M raise into a <strong>$4M senior pref tranche at 12%</strong> and a <strong>$4.1M Co-GP equity tranche</strong> pushes the equity IRR from <strong>24.0% → 35.4%</strong> and the equity multiple from <strong>1.74× → 2.19×</strong>. Same project, same profit — different capital architecture. The pref tranche offers predictable fixed yield with senior position; the equity tranche offers amplified upside.</div>
+  <div class="insight-title">Two ways to participate</div>
+  <div class="insight-text">
+    Trade Point offers two investment structures. <strong>Option A</strong> is a single Co-GP equity tranche — straightforward, full upside participation, 24.0% IRR. <strong>Option B</strong> splits the raise into a <strong>$4M senior pref at 12%</strong> and a <strong>$4.1M Co-GP equity tranche</strong> — the smaller equity base against the same profit pool pushes the equity IRR to <strong>35.4%</strong> and the multiple to <strong>2.19×</strong>. Same project. Same profit. Different capital architecture.
+  </div>
 </div>
 
 <div class="section">
   <h2 class="section-title serif">Investment Structure Options</h2>
   <div class="options-grid">
+
     <div class="option-card">
-      <div class="option-header navy-bg"><div><div class="option-label">Option A</div><div class="option-title">Full Co-GP Equity</div></div><span class="option-tag tag-amber">Standard</span></div>
+      <div class="option-header navy-bg">
+        <div>
+          <div class="option-label">Option A</div>
+          <div class="option-title">Full Co-GP Equity</div>
+        </div>
+        <span class="option-tag tag-amber">Single tranche</span>
+      </div>
       <div class="option-body">
         <div class="tranche">
           <div class="tranche-header navy">Co-GP Equity — $8,098,049</div>
           <div class="tranche-row"><span class="tr-label">Structure</span><span class="tr-val">10% pref + 50/50 profit split</span></div>
-          <div class="tranche-row"><span class="tr-label">Preferred return</span><span class="tr-val">(2,091,996)</span></div>
+          <div class="tranche-row"><span class="tr-label">Preferred return</span><span class="tr-val">2,091,996</span></div>
           <div class="tranche-row"><span class="tr-label">Profit available for split</span><span class="tr-val">7,832,348</span></div>
           <div class="tranche-row"><span class="tr-label">Co-GP 50% split</span><span class="tr-val gold">3,916,174</span></div>
           <div class="tranche-row"><span class="tr-label">Co-GP total return</span><span class="tr-val">14,106,219</span></div>
@@ -135,22 +200,31 @@
           <div class="metric-box"><div class="m-val amber">24.0%</div><div class="m-label">IRR</div></div>
           <div class="metric-box"><div class="m-val amber">1.74×</div><div class="m-label">Equity Multiple</div></div>
         </div>
+        <hr style="border:none;border-top:1px solid var(--border);margin:1rem 0;">
+        <p style="font-size:11px;color:var(--slate);line-height:1.6;">Single investor class. Full profit participation from dollar one above the preferred return. Simple structure, straightforward documentation.</p>
       </div>
     </div>
+
     <div class="option-card featured">
-      <div class="option-header green-bg"><div><div class="option-label">Option B</div><div class="option-title">Pref + Equity Hybrid</div></div><span class="option-tag tag-green">Recommended</span></div>
+      <div class="option-header green-bg">
+        <div>
+          <div class="option-label">Option B</div>
+          <div class="option-title">Pref + Equity Hybrid</div>
+        </div>
+        <span class="option-tag tag-green">Recommended</span>
+      </div>
       <div class="option-body">
         <div class="tranche">
           <div class="tranche-header green">Senior Pref Tranche — $4,000,000 @ 12%/yr</div>
           <div class="tranche-row"><span class="tr-label">Structure</span><span class="tr-val">Fixed 12% simple interest — no split</span></div>
-          <div class="tranche-row"><span class="tr-label">Interest earned (2.58 yrs)</span><span class="tr-val green">(1,240,000)</span></div>
+          <div class="tranche-row"><span class="tr-label">Interest earned (2.58 yrs)</span><span class="tr-val green">1,240,000</span></div>
           <div class="tranche-row"><span class="tr-label">Total pref return</span><span class="tr-val green">5,240,000</span></div>
           <div class="tranche-row"><span class="tr-label">Pref EM</span><span class="tr-val green">1.31× · predictable yield</span></div>
           <div class="tranche-row"><span class="tr-label">Position</span><span class="tr-val slate">Senior to equity — paid first</span></div>
         </div>
         <div class="tranche" style="margin-top:0.5rem;">
           <div class="tranche-header gold">Co-GP Equity Tranche — $4,098,049 · 50/50 split</div>
-          <div class="tranche-row"><span class="tr-label">10% pref on equity tranche</span><span class="tr-val">(1,058,663)</span></div>
+          <div class="tranche-row"><span class="tr-label">10% pref on equity tranche</span><span class="tr-val">1,058,663</span></div>
           <div class="tranche-row"><span class="tr-label">50% profit split</span><span class="tr-val gold">3,812,841</span></div>
           <div class="tranche-row"><span class="tr-label">Equity total return</span><span class="tr-val">8,969,543</span></div>
         </div>
@@ -158,25 +232,130 @@
           <div class="metric-box highlight"><div class="m-val green">35.4%</div><div class="m-label">Equity IRR</div></div>
           <div class="metric-box highlight"><div class="m-val green">2.19×</div><div class="m-label">Equity Multiple</div></div>
         </div>
+        <hr style="border:none;border-top:1px solid var(--border);margin:1rem 0;">
+        <p style="font-size:11px;color:var(--slate);line-height:1.6;">Two investor classes. Pref investors receive a senior fixed yield. Equity investors receive amplified upside — smaller capital base against the full profit pool.</p>
       </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="section">
+  <h2 class="section-title serif">Distribution Waterfall — Option B</h2>
+  <div class="waterfall">
+    <div class="wf-tier">
+      <div class="wf-accent" style="background:var(--navy);"></div>
+      <div class="wf-content">
+        <div class="wf-label" style="color:var(--slate);">Tier 1</div>
+        <div class="wf-title">Return of all invested capital</div>
+        <div class="wf-note">Pref tranche principal + equity tranche principal — returned first</div>
+      </div>
+      <div class="wf-val" style="color:var(--navy);">8,098,049</div>
+    </div>
+    <div class="wf-tier">
+      <div class="wf-accent" style="background:var(--green);"></div>
+      <div class="wf-content">
+        <div class="wf-label" style="color:var(--green-dk);">Tier 2A</div>
+        <div class="wf-title">Senior pref — fixed 12% × 2.58 years</div>
+        <div class="wf-note">$4M pref tranche · no profit participation above this</div>
+      </div>
+      <div class="wf-val" style="color:var(--green-dk);">1,240,000</div>
+    </div>
+    <div class="wf-tier">
+      <div class="wf-accent" style="background:var(--gold);"></div>
+      <div class="wf-content">
+        <div class="wf-label" style="color:var(--gold-dk);">Tier 2B</div>
+        <div class="wf-title">Co-GP equity pref — 10% × 2.58 years</div>
+        <div class="wf-note">On $4.098M equity tranche only · before profit split</div>
+      </div>
+      <div class="wf-val" style="color:var(--gold-dk);">1,058,663</div>
+    </div>
+    <div class="wf-tier">
+      <div class="wf-accent" style="background:var(--amber);"></div>
+      <div class="wf-content">
+        <div class="wf-label" style="color:var(--amber);">Tier 3</div>
+        <div class="wf-title">50 / 50 profit split</div>
+        <div class="wf-note">Co-GP equity receives 50% of all profit above tiers 1–2 · GP retains 50%</div>
+      </div>
+      <div class="wf-val" style="color:var(--amber);">3,812,841</div>
+    </div>
+    <div class="wf-total">
+      <div class="wf-total-label">Total Co-GP return (all tranches combined)</div>
+      <div class="wf-total-val">14,209,553</div>
     </div>
   </div>
 </div>
 
 <div class="section">
-  <h2 class="section-title serif">Waterfall — Option B (Recommended)</h2>
-  <div class="waterfall">
-    <div class="wf-tier"><div class="wf-accent" style="background:var(--navy);"></div><div class="wf-content"><div class="wf-label" style="color:var(--slate);">Tier 1</div><div class="wf-title">Return of all invested capital</div><div class="wf-note">Pref tranche principal + equity tranche principal — returned first</div></div><div class="wf-val navy">8,098,049</div></div>
-    <div class="wf-tier"><div class="wf-accent" style="background:var(--green);"></div><div class="wf-content"><div class="wf-label" style="color:var(--green-dk);">Tier 2A</div><div class="wf-title">Senior pref — fixed 12% × 2.58 years</div><div class="wf-note">$4M pref tranche · no profit participation above this</div></div><div class="wf-val" style="color:var(--green-dk);">(1,240,000)</div></div>
-    <div class="wf-tier"><div class="wf-accent" style="background:var(--gold);"></div><div class="wf-content"><div class="wf-label" style="color:var(--gold-dk);">Tier 2B</div><div class="wf-title">Co-GP equity pref — 10% × 2.58 years</div><div class="wf-note">On $4.098M equity tranche only · before profit split</div></div><div class="wf-val" style="color:var(--gold-dk);">(1,058,663)</div></div>
-    <div class="wf-tier"><div class="wf-accent" style="background:var(--amber);"></div><div class="wf-content"><div class="wf-label" style="color:var(--amber);">Tier 3</div><div class="wf-title">50 / 50 profit split</div><div class="wf-note">Co-GP equity receives 50% of all profit above tiers 1–2 · GP retains 50%</div></div><div class="wf-val" style="color:var(--amber);">3,812,841</div></div>
-    <div class="wf-total"><div class="wf-total-label">Total Co-GP return (all tranches combined)</div><div class="wf-total-val">14,209,553</div></div>
+  <h2 class="section-title serif">Three-Phase Build</h2>
+  <div class="phase-row">
+    <div class="phase-cell">
+      <div class="phase-accent" style="background:var(--navy);"></div>
+      <div class="phase-num">Phase 1</div>
+      <div class="phase-name">Building C</div>
+      <div class="phase-detail"><strong>51,088 SF · 20 units</strong><br>$350 / SF<br>Months 0 – 28<br>2 units / month absorption</div>
+    </div>
+    <div class="phase-cell">
+      <div class="phase-accent" style="background:var(--gold);"></div>
+      <div class="phase-num">Phase 2A</div>
+      <div class="phase-name">Building B</div>
+      <div class="phase-detail"><strong>33,320 SF · 14 units</strong><br>$357.50 / SF<br>Months 24 – 33<br>Funded from Phase 1 proceeds</div>
+    </div>
+    <div class="phase-cell">
+      <div class="phase-accent" style="background:var(--green);"></div>
+      <div class="phase-num">Phase 2B</div>
+      <div class="phase-name">Building A</div>
+      <div class="phase-detail"><strong>13,856 SF · 4 units</strong><br>$367.50 / SF<br>Months 29 – 31<br>Funded from Phase 2A proceeds</div>
+    </div>
+  </div>
+  <p style="font-size:11px;color:var(--slate-lt);margin-top:0.6rem;font-family:'DM Mono',monospace;">Phase 1 net proceeds of $7.6M fund both Phase 2 equity tranches with a $4.69M surplus. No second capital call required.</p>
+</div>
+
+<div class="section">
+  <h2 class="section-title serif">Why Trade Point</h2>
+  <div class="strengths-grid">
+    <div class="strength-cell">
+      <div class="s-dot"></div>
+      <div><div class="s-title">SBA 504 exit — de-risked absorption</div><div class="s-text">Every buyer enters with institutional financing at 10% down. 38 independent owner-user closings — no bulk sale dependency, no single point of failure.</div></div>
+    </div>
+    <div class="strength-cell">
+      <div class="s-dot"></div>
+      <div><div class="s-title">Phase 2 fully self-funded</div><div class="s-text">Phase 1 generates $7.6M net after loan repayment — fully covers both Phase 2 equity tranches with a $4.69M surplus. No second capital call, ever.</div></div>
+    </div>
+    <div class="strength-cell">
+      <div class="s-dot"></div>
+      <div><div class="s-title">Supply-constrained SWFL market</div><div class="s-text">Southwest Florida flex industrial is chronically undersupplied. Cape Coral's industrial base has grown significantly with demand outpacing new deliveries.</div></div>
+    </div>
+    <div class="strength-cell">
+      <div class="s-dot"></div>
+      <div><div class="s-title">Conservative pricing with built-in escalation</div><div class="s-text">Phase 1 at $350/SF is the base case. Phases 2A and 2B escalate to $357.50 and $367.50 as market comps accumulate through Phase 1 sell-out.</div></div>
+    </div>
+    <div class="strength-cell">
+      <div class="s-dot"></div>
+      <div><div class="s-title">Returns above market benchmark</div><div class="s-text">Flex industrial Co-GP deals typically target 18–25% IRR. The equity tranche delivers 35.4% at the base case without stretching absorption assumptions.</div></div>
+    </div>
+    <div class="strength-cell">
+      <div class="s-dot"></div>
+      <div><div class="s-title">Short hold, clear exit path</div><div class="s-text">31-month absorption-driven exit. Each unit closes independently through SBA 504 — no refinance dependency, no bulk discount risk.</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="cta-band">
+  <div>
+    <div class="cta-eyebrow">Next step</div>
+    <div class="cta-title">Request the full investment memorandum and proforma</div>
+  </div>
+  <div class="cta-contact">
+    <strong>Vantage Point Investments</strong><br>
+    Cape Coral, FL<br>
+    rob@vpiflorida.com
   </div>
 </div>
 
 <div class="footnote">
-  Trade Point · Cape Coral, FL · 98,264 SF flex industrial condo · 38 units · Three-phase build · 70% LTC construction loan · $34.88M gross revenue · $9.92M net profit · 31-month hold<br>
-  All figures based on v3.5 proforma assumptions. Interest reserve capitalizes into construction loan. Phase 2 self-funded from Phase 1 proceeds — $4.69M surplus, no second capital call. Prepared March 2026 · Vantage Point Investments · rob@vpiflorida.com
+  This document is prepared for informational purposes only and does not constitute an offer to sell or a solicitation of an offer to buy any security. All projections are based on current assumptions and subject to change. Past performance is not indicative of future results. Investment in real estate involves risk including possible loss of principal. Prospective investors should conduct their own due diligence and consult with their financial, legal, and tax advisors prior to making any investment decision.<br><br>
+  Trade Point · Cape Coral, FL · 98,264 SF flex industrial condo · 38 units · Three-phase build · 70% LTC construction loan · $34.88M gross revenue · $9.92M net project profit · 31-month hold. All figures based on v3.5 proforma assumptions. Interest reserve capitalizes into construction loan. Phase 2 self-funded from Phase 1 proceeds — $4.69M surplus, no second capital call. Prepared March 2026 · Vantage Point Investments.
 </div>
 
 </body>
