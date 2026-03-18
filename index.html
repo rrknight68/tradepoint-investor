@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Trade Point — Co-GP Investment Opportunity</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy:   #0D2B4E;
+    --navy-dk:#071D35;
+    --navy-md:#163A62;
+    --gold:   #C89A3A;
+    --gold-lt:#E8C97A;
+    --gold-dk:#9E7720;
+    --cream:  #F9F7F3;
+    --cream-dk:#F0EDE6;
+    --slate:  #6B7B8D;
+    --slate-lt:#8C9BAA;
+    --green:  #1D9E75;
+    --green-lt:#E1F5EE;
+    --green-dk:#0F6E56;
+    --amber:  #BA7517;
+    --amber-lt:#FAEEDA;
+    --red:    #A32D2D;
+    --border: rgba(13,43,78,0.12);
+    --border-gold: rgba(200,154,58,0.3);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--navy);
+    min-height: 100vh;
+    padding: 2rem 1.5rem 4rem;
+  }
+
+  .serif { font-family: 'Cormorant Garamond', serif; }
+  .mono  { font-family: 'DM Mono', monospace; }
+
+  .page-header { margin-bottom: 2.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border-gold); }
+  .breadcrumb { font-size: 11px; letter-spacing: 0.08em; color: var(--slate); text-transform: uppercase; margin-bottom: 0.75rem; font-family: 'DM Mono', monospace; }
+  .breadcrumb span { color: var(--gold); }
+  .page-title { font-family: 'Cormorant Garamond', serif; font-size: 2.2rem; font-weight: 500; color: var(--navy); line-height: 1.15; margin-bottom: 0.4rem; }
+  .page-subtitle { font-size: 13px; color: var(--slate); font-family: 'DM Mono', monospace; }
+
+  .stats-row { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 4px; overflow: hidden; margin-bottom: 2rem; }
+  .stat-cell { background: var(--cream); padding: 1rem 1.25rem; transition: background 0.15s; }
+  .stat-cell:hover { background: var(--cream-dk); }
+  .stat-label { font-size: 10px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--slate); font-family: 'DM Mono', monospace; margin-bottom: 0.35rem; }
+  .stat-value { font-family: 'DM Mono', monospace; font-size: 1.3rem; font-weight: 500; color: var(--navy); line-height: 1; }
+  .stat-value.gold  { color: var(--gold-dk); }
+  .stat-value.green { color: var(--green-dk); }
+  .stat-sub { font-size: 10px; color: var(--slate-lt); margin-top: 0.2rem; font-family: 'DM Mono', monospace; }
+
+  .section { margin-bottom: 2.5rem; }
+  .section-title { font-family: 'Cormorant Garamond', serif; font-size: 1.25rem; font-weight: 500; color: var(--navy); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.6rem; }
+  .section-title::after { content: ''; flex: 1; height: 1px; background: var(--border-gold); }
+
+  .options-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin-bottom: 2rem; }
+  .option-card { border: 1px solid var(--border); border-radius: 4px; overflow: hidden; background: white; transition: box-shadow 0.2s; }
+  .option-card:hover { box-shadow: 0 4px 24px rgba(13,43,78,0.08); }
+  .option-card.featured { border-color: var(--green); }
+  .option-header { padding: 1rem 1.25rem; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: flex-start; }
+  .option-header.navy-bg  { background: var(--navy); }
+  .option-header.green-bg { background: var(--green-dk); }
+  .option-label { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.6); margin-bottom: 0.25rem; }
+  .option-title { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-weight: 500; color: white; }
+  .option-tag { font-size: 10px; font-family: 'DM Mono', monospace; padding: 3px 8px; border-radius: 2px; font-weight: 500; white-space: nowrap; }
+  .tag-amber { background: var(--amber-lt); color: var(--amber); }
+  .tag-green { background: rgba(255,255,255,0.15); color: white; border: 1px solid rgba(255,255,255,0.3); }
+  .option-body { padding: 1.25rem; }
+
+  .tranche { border: 1px solid var(--border); border-radius: 3px; margin-bottom: 0.75rem; overflow: hidden; }
+  .tranche-header { padding: 0.5rem 0.875rem; font-size: 10px; letter-spacing: 0.07em; text-transform: uppercase; font-family: 'DM Mono', monospace; font-weight: 500; }
+  .tranche-header.navy  { background: var(--navy);     color: var(--gold); }
+  .tranche-header.green { background: var(--green-lt); color: var(--green-dk); }
+  .tranche-header.gold  { background: #FDF6E8;          color: var(--gold-dk); }
+  .tranche-row { display: flex; justify-content: space-between; align-items: baseline; padding: 0.45rem 0.875rem; border-top: 1px solid var(--border); font-size: 12px; }
+  .tr-label { color: var(--slate); }
+  .tr-val { font-family: 'DM Mono', monospace; font-weight: 500; color: var(--navy); }
+  .tr-val.green { color: var(--green-dk); }
+  .tr-val.gold  { color: var(--gold-dk); }
+  .tr-val.slate { color: var(--slate); }
+
+  .metrics-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 0.625rem; margin-top: 1rem; }
+  .metric-box { background: var(--cream); border: 1px solid var(--border); border-radius: 3px; padding: 0.875rem 1rem; text-align: center; }
+  .metric-box.highlight { background: var(--green-lt); border-color: rgba(29,158,117,0.3); }
+  .m-val { font-family: 'DM Mono', monospace; font-size: 1.75rem; font-weight: 500; line-height: 1; margin-bottom: 0.2rem; }
+  .m-val.green { color: var(--green-dk); }
+  .m-val.amber { color: var(--amber); }
+  .m-label { font-size: 10px; color: var(--slate); font-family: 'DM Mono', monospace; text-transform: uppercase; letter-spacing: 0.05em; }
+
+  .divider { border: none; border-top: 1px solid var(--border); margin: 1rem 0; }
+
+  .insight { border-left: 3px solid var(--gold); background: white; padding: 1rem 1.25rem; border-radius: 0 3px 3px 0; margin-bottom: 1.25rem; }
+  .insight-title { font-family: 'Cormorant Garamond', serif; font-size: 1rem; font-weight: 600; color: var(--navy); margin-bottom: 0.4rem; }
+  .insight-text { font-size: 12.5px; color: var(--slate); line-height: 1.65; }
+  .insight-text strong { color: var(--navy); }
+
+  .waterfall { border: 1px solid var(--border); border-radius: 4px; overflow: hidden; }
+  .wf-tier { display: flex; align-items: stretch; border-bottom: 1px solid var(--border); }
+  .wf-tier:last-child { border-bottom: none; }
+  .wf-accent { width: 4px; flex-shrink: 0; }
+  .wf-content { flex: 1; padding: 0.875rem 1rem; }
+  .wf-label { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 0.2rem; }
+  .wf-title { font-size: 13px; font-weight: 500; color: var(--navy); margin-bottom: 0.1rem; }
+  .wf-note  { font-size: 11px; color: var(--slate); }
+  .wf-val { font-family: 'DM Mono', monospace; font-size: 1.1rem; font-weight: 500; padding: 0.875rem 1rem; display: flex; align-items: center; white-space: nowrap; }
+  .wf-total { background: var(--navy); padding: 0.875rem 1rem; display: flex; justify-content: space-between; align-items: center; }
+  .wf-total-label { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(255,255,255,0.6); }
+  .wf-total-val   { font-family: 'DM Mono', monospace; font-size: 1.3rem; font-weight: 500; color: var(--gold); }
+
+  .facts-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 4px; overflow: hidden; }
+  .fact-cell { background: white; padding: 1rem 1.25rem; }
+  .fact-label { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--slate-lt); margin-bottom: 0.3rem; }
+  .fact-val { font-size: 13px; font-weight: 500; color: var(--navy); line-height: 1.4; }
+  .fact-val.mono { font-family: 'DM Mono', monospace; }
+
+  .phase-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 4px; overflow: hidden; }
+  .phase-cell { background: white; padding: 1rem 1.25rem; }
+  .phase-accent { width: 100%; height: 3px; border-radius: 1px; margin-bottom: 0.75rem; }
+  .phase-num { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--slate-lt); margin-bottom: 0.25rem; }
+  .phase-name { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 500; color: var(--navy); margin-bottom: 0.5rem; }
+  .phase-detail { font-size: 11px; color: var(--slate); font-family: 'DM Mono', monospace; line-height: 1.7; }
+  .phase-detail strong { color: var(--navy); }
+
+  .strategy-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 4px; overflow: hidden; }
+  .strategy-cell { background: white; padding: 1.25rem; }
+  .strategy-cell.dark { background: var(--navy); }
+  .sc-label { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--slate); margin-bottom: 0.5rem; }
+  .strategy-cell.dark .sc-label { color: rgba(255,255,255,0.4); }
+  .sc-title { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; font-weight: 500; color: var(--navy); margin-bottom: 0.6rem; }
+  .strategy-cell.dark .sc-title { color: var(--gold); }
+  .sc-body { font-size: 12px; color: var(--slate); line-height: 1.6; }
+  .strategy-cell.dark .sc-body { color: rgba(255,255,255,0.65); }
+  .sc-body strong { color: var(--navy); }
+  .strategy-cell.dark .sc-body strong { color: white; }
+
+  .strengths-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 4px; overflow: hidden; }
+  .strength-cell { background: white; padding: 1rem 1.25rem; display: flex; gap: 0.875rem; align-items: flex-start; }
+  .s-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--green); margin-top: 5px; flex-shrink: 0; }
+  .s-title { font-size: 12px; font-weight: 500; color: var(--navy); margin-bottom: 0.2rem; }
+  .s-text  { font-size: 11px; color: var(--slate); line-height: 1.55; }
+
+  .cta-band { background: var(--navy); border-radius: 4px; padding: 1.75rem 2rem; display: flex; justify-content: space-between; align-items: center; gap: 2rem; margin-top: 2rem; }
+  .cta-eyebrow { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.4rem; }
+  .cta-title { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 500; color: white; line-height: 1.2; }
+  .cta-contact { font-family: 'DM Mono', monospace; font-size: 12px; color: rgba(255,255,255,0.55); line-height: 1.8; text-align: right; }
+  .cta-contact strong { color: white; }
+
+  .footnote { font-size: 11px; color: var(--slate-lt); font-family: 'DM Mono', monospace; margin-top: 2.5rem; padding-top: 1rem; border-top: 1px solid var(--border); line-height: 1.7; }
+
+  @media (max-width: 768px) {
+    .options-grid   { grid-template-columns: 1fr; }
+    .stats-row      { grid-template-columns: repeat(3,1fr); }
+    .facts-grid     { grid-template-columns: 1fr 1fr; }
+    .phase-row      { grid-template-columns: 1fr; }
+    .strategy-grid  { grid-template-columns: 1fr; }
+    .strengths-grid { grid-template-columns: 1fr; }
+    .cta-band       { flex-direction: column; }
+    .cta-contact    { text-align: left; }
+  }
+</style>
+</head>
+<body>
+
+<!-- PAGE HEADER -->
+<div class="page-header">
+  <div class="breadcrumb">Vantage Point Investments <span>/</span> Trade Point <span>/</span> Co-GP Opportunity</div>
+  <h1 class="page-title">Trade Point — Co-GP Investment Opportunity</h1>
+  <p class="page-subtitle">Cape Coral, FL · 98,264 SF flex industrial · 38 units · 3-phase build · $8.35M raise · 31-month hold</p>
+</div>
+
+      }}
+    />
+  
+
+<!-- SUMMARY STAITS
+-->
+<div class="stats-row">
+  <div class="stat-cell">
+    <div class="stat-label">Gross Revenue</div>
+    <div class="stat-value gold mono">$34.88M</div>
+    <div class="stat-sub">98,264 SF · 38 units</div>
+  </div>
+  <div class="stat-cell">
+    <div class="stat-label">Net Project Profit</div>
+    <div class="stat-value green mono">$9.92M</div>
+    <div class="stat-sub">28.4% margin</div>
+  </div>
+  <div class="stat-cell">
+    <div class="stat-label">Equity IRR (Option A)</div>
+    <div class="stat-value mono" style="color:var(--amber)">24.0%</div>
+    <div class="stat-sub">full equity · 1.74×</div>
+  </div>
+  <div class="stat-cell">
+    <div class="stat-label">Equity IRR (Option B)</div>
+    <div class="stat-value green mono">35.4%</div>
+    <div class="stat-sub">pref + equity · 2.19×</div>
+  </div>
+  <div class="stat-cell">
+    <div class="stat-label">Hold Period</div>
+    <div class="stat-value mono">31 mo</div>
+    <div class="stat-sub">absorption-driven exit</div>
+  </div>
+</div>
+ <div class="fact-cell"><div class="fact-label">Second Capital Call</div><div class="fact-val" style="color:var(--green-dk)">None</div></div>
+  </div>
+</div>
+
+<!-- THREE PHASE BUILD -->
+<div class="section">
+  <h2 class="section-title serif">Three-Phase Build</h2>
+  <div class="phase-row">
+    <div class="phase-cell">
+      <div class="phase-accent" style="background:var(--navy);"></div>
+      <div class="phase-num">Phase 1</div>
+      <div class="phase-name">Building C</div>
+      <div class="phase-detail"><strong>51,088 SF · 20 units</strong><br>$350 / SF<br>Months 0 – 28<br>2 units / month absorption</div>
+    </div>
+    <div class="phase-cell">
+      <div class="phase-accent" style="background:var(--gold);"></div>
+      <div class="phase-num">Phase 2A</div>
+      <div class="phase-name">Building B</div>
+      <div class="phase-detail"><strong>33,320 SF · 14 units</strong><br>$357.50 / SF<br>Months 24 – 33<br>Funded from Phase 1 proceeds</div>
+    </div>
+    <div class="phase-cell">
+      <div class="phase-accent" style="background:var(--green);"></div>
+      <div class="phase-num">Phase 2B</div>
+      <div class="phase-name">Building A</div>
+      <div class="phase-detail"><strong>13,856 SF · 4 units</strong><br>$367.50 / SF<br>Months 29 – 31<br>Funded from Phase 2A proceeds</div>
+    </div>
+  </div>
+  <p style="font-size:11px;color:var(--slate-lt);margin-top:0.6rem;font-family:'DM Mono',monospace;">Phase 1 net proceeds of $7.6M fund both Phase 2 equity tranches with a $4.69M surplus. No second capital call required.</p>
+</div>
+�<!-- INVESTOR PROFILES -->
+<div class="section">
+  <h2 class="section-title serif">Which Tranche Fits Your Capital</h2>
+  <div class="strategy-grid">
+    <div class="strategy-cell dark">
+      <div class="sc-label">Senior Pref — $4M @ 12%</div>
+      <div class="sc-title">Fixed yield, senior position</div>
+      <div class="sc-body">12% simple interest on $4M over 31 months. <strong>Total return: $5,240,000 · 1.31× EM.</strong> Paid before equity distributions. No profit participation — fully predictable return. Ideal for capital seeking yield certainty over speculative upside.</div>
+    </div>
+    <div class="strategy-cell">
+      <div class="sc-label">Co-GP Equity — $4.1M · 50/50</div>
+      <div class="sc-title">Maximum upside participation</div>
+      <div class="sc-body">10% preferred return + 50% of all profit above pref. <strong>35.4% IRR · 2.19× EM · $8,969,543 total return.</strong> Amplified by the smaller equity base against the full project profit pool. Ideal for capital seeking top-of-market returns on a short industrial hold.</div>
+    </div>
+  </div>
+</div>
+
+<!-- WHY THIS DEAL -->
+<div class="section">
+  <h2 class="section-title serif">Why Trade Point</h2>
+  <div class="strengths-grid">
+    <div class="strength-cell">
+      <div class="s-dot"></div>
+      <div><div class="s-title">SBA 504 exit — de-risked absorption</div><div class="s-text">Every buyer enters with institutional financing at 10% down. 38 independent owner-user closings — ino bulk sale dependency, no single point of failure.</div></div>
+    </div>
+    <div class="strength-cell">
+      <div class="s-dot"></div>
+      <div><div class="s-title">Phase 2 fully self-funded</div><div class="s-text">Phase 1 generates $7.6M net after loan repayment — fully covers both Phase 2 equity tranches with a $4.69M surplus. No second capital call, ever.</div></div>
+    </div>
+    <div class="strength-cell">
+      <div class="s-dot"></div>
+      <div><div class="s-title">Supply-constrained SWFL market</div><div class="s-text">Southwest Florida flex industrial is chronically undersupplied. Cape Coral's industrial base has grown significantly with demand outpacing new deliveries.</div></div>
+    </div>
+    <div class="strength-cell">
+      <div class="s-dot"></div>
+      <div><div class="s-title">Conservative pricing with built-in escalation</div><div class="s-text">Phase 1 at $350/SF is the base case. Phases 2A and 2B escalate to $357.50 and $367.50 as market comps accumulate through Phase 1 sell-out.</div></div>
+    </div>
+    <div class="strength-cell">
+      <div class="s-dot"></div>
+      <div><div class="s-title">Returns above market benchmark</div><div class="s-text">Flex industrial Co-GP deals typically target 18–25% IRR. The equity tranche delivers 35.4% at the base case without stretching absorption assumptions.</div></div>
+    </div>
+    <div class="strength-cell">
+      <div class="s-dot"></div>
+      <div><div class="s-title">Short hold, clear exit path</div><div class="s-text">31-month absorption-driven exit. Each unit closes independently through SBA 504 — no refinance dependency, no bulk discount risk.</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="cta-band">
+  <div>
+    <div class="cta-eyebrow">Next step</div>
+    <div class="cta-title">Request the full investment memorandum and proforma</div>
+  </div>
+  <div class="cta-contact">
+    <strong>Vantage Point Investments</strong><br>
+    Cape Coral, FL<br>
+    rob@vpiflorida.com
+  </div>
+</div>
+
+<!-- FOOTNOTE -->
+<div class="footnote">
+  This document is prepared for informational purposes only and does not constitute an offer to sell or a solicitation of an offer to buy any security. All projections are based on current assumptions and subject to change. Past performance is not indicative of future results. Investment in real estate involves risk including possible loss of principal. Prospective investors should conduct their own due diligence and consult with their financial, legal, and tax advisors prior to making any investment decision.<br><br>
+  Trade Point · Cape Coral, FL · 98,264 SF flex industrial condo · 38 units · Three-phase build · 70% LTC construction loan · $34.88M gross revenue · $9.92M net project profit · 31-month hold
+</div>
+
+</body>
+</html>
