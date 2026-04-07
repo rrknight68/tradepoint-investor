@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Trade Point Industrial — Strategy Comparison · VPI · v4.1</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Jost:wght@300;400;500&family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#0D2B4E;--mid:#1A3D66;--gold:#C89A3A;--glt:#E2B95A;--gb:rgba(200,154,58,.18);--gbs:rgba(200,154,58,.32);--cream:#F9F7F3;--parch:#F2EDE3;--vpiw:#F0EDE5;--muted:#8A95A8;--deduct:#5A6478;--sell:#185FA5;--sellm:#378ADD;--hold:#0F6E56;--holdm:#1D9E75;--warn:#8B3A00;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'DM Sans',sans-serif;color:var(--navy);background:var(--cream);font-size:13px;line-height:1.5;}
+.wrap{max-width:1100px;margin:0 auto;}
+@media print{body{background:white;font-size:11px;}.wrap{max-width:100%;}.no-print{display:none;}*{-webkit-print-color-adjust:exact;print-color-adjust:exact;}}
+.hdr{background:var(--navy);padding:2rem 2.5rem 0;}
+.logo-row{display:flex;align-items:center;gap:.9rem;margin-bottom:1.4rem;}
+.logo{display:flex;flex-direction:column;}
+.lw{font-family:'Cinzel',serif;font-size:13px;letter-spacing:.18em;color:var(--vpiw);text-transform:uppercase;}
+.lr{width:28px;height:1px;background:var(--gold);margin:4px 0;}
+.li{font-family:'Cinzel',serif;font-size:8.5px;letter-spacing:.2em;color:var(--gold);text-transform:uppercase;}
+.lsep{width:1px;height:28px;background:rgba(200,154,58,.25);}
+.dlbl{font-family:'Jost',sans-serif;font-size:9.5px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);}
+.title{font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:600;color:var(--cream);line-height:1.1;margin-bottom:.3rem;}
+.title em{color:var(--glt);font-style:italic;}
+.sub{font-family:'Jost',sans-serif;font-size:11px;font-weight:300;color:var(--muted);margin-bottom:1.75rem;}
+.tabs{display:flex;border-top:1px solid rgba(200,154,58,.18);}
+.tab{font-family:'Jost',sans-serif;font-size:10px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;padding:.6rem 1.3rem;color:var(--muted);border-right:1px solid rgba(200,154,58,.1);}
+.tab.s{color:#7AB3E8;border-bottom:3px solid var(--sellm);}.tab.h{color:#5DCAA5;border-bottom:3px solid var(--holdm);}.tab.a{color:var(--gold);border-bottom:3px solid var(--gold);}
+.mbar{background:var(--parch);border-bottom:1px solid var(--gb);padding:.85rem 2.5rem;display:flex;}
+.mi{flex:1;display:flex;flex-direction:column;gap:2px;padding-right:1rem;border-right:1px solid var(--gb);}
+.mi:first-child{padding-left:0;}.mi:last-child{border-right:none;padding-right:0;}
+.ml{font-family:'Jost',sans-serif;font-size:8px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);}
+.mv{font-family:'DM Mono',monospace;font-size:16px;font-weight:500;color:var(--navy);}.mv.hot{color:var(--warn);}
+.mn{font-size:9px;color:var(--deduct);font-style:italic;}
+.body{padding:1.75rem 2.5rem;}
+.sec{font-family:'Jost',sans-serif;font-size:9px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);padding-bottom:.45rem;border-bottom:1px solid var(--gb);margin-bottom:1.1rem;margin-top:1.75rem;}
+.sec:first-child{margin-top:0;}
+.src{font-family:'DM Mono',monospace;font-size:7.5px;padding:1px 5px;border-radius:3px;border:1px solid var(--gb);color:var(--deduct);margin-left:5px;vertical-align:middle;display:inline-block;}
+/* THESIS */
+.thesis{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+.tc{border-radius:8px;overflow:hidden;border:1px solid var(--gb);}
+.tch{padding:.85rem 1.2rem;display:flex;align-items:center;gap:.65rem;}
+.tch.s{background:var(--sell);}.tch.h{background:var(--hold);}
+.tbadge{font-family:'Jost',sans-serif;font-size:7.5px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;padding:2px 8px;border-radius:20px;border:1px solid rgba(255,255,255,.3);color:rgba(255,255,255,.8);white-space:nowrap;}
+.thl{font-family:'Cormorant Garamond',serif;font-size:14.5px;font-weight:600;color:white;line-height:1.25;}
+.tb{padding:1rem 1.2rem;background:white;font-size:12px;line-height:1.7;color:var(--navy);opacity:.87;}
+/* PROFIT BOX */
+.profit-box{background:var(--parch);border:1px solid var(--gb);border-radius:8px;padding:1.1rem 1.4rem;margin-top:1rem;display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;}
+.pb-head{font-family:'Cinzel',serif;font-size:8.5px;letter-spacing:.16em;text-transform:uppercase;margin-bottom:.5rem;}
+.pb-head.s{color:var(--sell);}.pb-head.h{color:var(--hold);}
+.pb-body{font-size:11.5px;line-height:1.65;color:var(--navy);}
+.pf-row{display:flex;justify-content:space-between;padding:.22rem 0;border-bottom:1px solid var(--gb);font-size:11px;}
+.pf-row:last-child{border-bottom:none;}
+.pf-row.total{border-top:1.5px solid var(--navy);border-bottom:none;margin-top:2px;padding-top:4px;font-weight:500;}
+.pf-label{color:var(--deduct);}
+.pf-val{font-family:'DM Mono',monospace;color:var(--navy);}
+.pf-val.vpi{color:var(--sell);}
+.pf-val.wh{color:var(--hold);}
+/* MAIN TABLE */
+.tbl{width:100%;border-collapse:collapse;border:1px solid var(--gb);border-radius:8px;overflow:hidden;}
+.tbl thead th{padding:.65rem 1rem;font-family:'Jost',sans-serif;font-size:8.5px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;}
+.tbl .lh{background:var(--navy);color:var(--gold);text-align:left;width:260px;}
+.tbl .sh{background:var(--sell);color:white;text-align:center;}
+.tbl .hh{background:var(--hold);color:white;text-align:center;}
+.tbl tbody td{padding:.48rem 1rem;border-top:1px solid var(--gb);}
+.ll{background:var(--parch);color:var(--navy);font-size:11.5px;}
+.sc{background:rgba(24,95,165,.04);text-align:center;font-family:'DM Mono',monospace;font-size:12px;}
+.hc{background:rgba(15,110,86,.04);text-align:center;font-family:'DM Mono',monospace;font-size:12px;}
+.sr{background:var(--navy);color:var(--muted);font-family:'Jost',sans-serif;font-size:8px;letter-spacing:.12em;text-transform:uppercase;padding:.42rem 1rem;}
+.ws{color:var(--sell);font-weight:500;}.wh{color:var(--hold);font-weight:500;}.neu{color:var(--deduct);}
+.big{font-size:17px;font-weight:500;}.warn-c{color:var(--warn);}.zero{color:var(--deduct);}
+.note-cell{background:#FFF9EC;font-family:'DM Sans',sans-serif;font-size:10.5px;color:var(--warn);text-align:left !important;padding:.5rem 1rem !important;border-top:1px solid rgba(200,154,58,.3) !important;}
+/* DIST TABLE */
+.dtbl{width:100%;border-collapse:collapse;border:1px solid var(--gb);border-radius:8px;overflow:hidden;}
+.dtbl thead th{padding:.55rem .9rem;font-family:'Jost',sans-serif;font-size:8px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;}
+.dtbl .dh{background:var(--navy);color:var(--gold);text-align:left;}
+.dtbl .sh2{background:var(--sell);color:white;text-align:center;}
+.dtbl .hh2{background:var(--hold);color:white;text-align:center;}
+.dtbl tbody td{padding:.4rem .9rem;border-top:1px solid var(--gb);text-align:center;font-family:'DM Mono',monospace;font-size:11.5px;}
+.dtbl .yr{background:var(--parch);text-align:left;font-family:'DM Sans',sans-serif;font-size:11px;}
+/* SCARCITY */
+.scar{background:var(--mid);border:1px solid var(--gbs);border-radius:8px;padding:1.3rem 1.75rem;}
+.sct{font-family:'Cinzel',serif;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:.85rem;}
+.scg{display:grid;grid-template-columns:repeat(5,1fr);gap:.85rem;}
+.scv{font-family:'DM Mono',monospace;font-size:20px;font-weight:500;color:white;display:block;}
+.scl{font-family:'Jost',sans-serif;font-size:10px;font-weight:300;color:rgba(255,255,255,.65);line-height:1.4;display:block;}
+/* OZ */
+.oz{background:var(--navy);border-radius:8px;overflow:hidden;}
+.ozh{padding:.85rem 1.75rem;border-bottom:1px solid rgba(200,154,58,.18);}
+.oze{font-family:'Cinzel',serif;font-size:8px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:.2rem;}
+.ozhl{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:600;color:var(--cream);line-height:1.2;}
+.ozr{display:grid;grid-template-columns:1fr auto;gap:2rem;padding:1.3rem 1.75rem;align-items:start;}
+.ozc{font-size:12px;line-height:1.75;color:rgba(249,247,243,.72);}
+.ozs{display:flex;flex-direction:column;gap:.65rem;flex-shrink:0;min-width:180px;}
+.ozst{display:flex;flex-direction:column;gap:2px;text-align:right;padding-bottom:.6rem;border-bottom:1px solid rgba(200,154,58,.15);}
+.ozst:last-child{border-bottom:none;padding-bottom:0;}
+.ozsl{font-family:'Jost',sans-serif;font-size:7.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);}
+.ozsv{font-family:'DM Mono',monospace;font-size:18px;font-weight:500;color:white;}
+/* PROS CONS */
+.pc{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+.pcc{border:1px solid var(--gb);border-radius:8px;overflow:hidden;}
+.pch{padding:.5rem 1.2rem;font-family:'Jost',sans-serif;font-size:8.5px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;}
+.pcc.s .pch{background:var(--sell);color:white;}.pcc.h .pch{background:var(--hold);color:white;}
+.pci{padding:.65rem 1.2rem;background:white;}
+.pi{display:flex;gap:.5rem;padding:.35rem 0;border-bottom:1px solid var(--gb);font-size:11.5px;line-height:1.5;color:var(--navy);align-items:flex-start;}
+.pi:last-child{border-bottom:none;}
+.pd{width:5px;height:5px;border-radius:50%;margin-top:5px;flex-shrink:0;}
+.pcc.s .pd{background:var(--sell);}.pcc.h .pd{background:var(--hold);}
+.conh{padding:.35rem 1.2rem;font-family:'Jost',sans-serif;font-size:8px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;border-top:1px solid var(--gb);}
+.pcc.s .conh{background:rgba(24,95,165,.05);color:var(--sell);}.pcc.h .conh{background:rgba(15,110,86,.05);color:var(--hold);}
+.conb{padding:.55rem 1.2rem;background:var(--parch);}
+.ci{display:flex;gap:.5rem;padding:.3rem 0;border-bottom:1px solid rgba(200,154,58,.12);font-size:11px;line-height:1.5;color:var(--deduct);align-items:flex-start;}
+.ci:last-child{border-bottom:none;}
+.csq{width:5px;height:5px;border-radius:1px;margin-top:5px;flex-shrink:0;background:var(--warn);}
+/* VERDICT */
+.vd{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+.vc{border:1px solid var(--gb);border-radius:8px;padding:1.1rem;background:white;}
+.ve{font-family:'Cinzel',serif;font-size:8px;letter-spacing:.18em;text-transform:uppercase;margin-bottom:.4rem;}
+.vc.s .ve{color:var(--sell);}.vc.h .ve{color:var(--hold);}
+.vhl{font-family:'Cormorant Garamond',serif;font-size:14px;font-weight:600;color:var(--navy);margin-bottom:.6rem;line-height:1.3;}
+.vl{list-style:none;}
+.vl li{font-size:11.5px;line-height:1.5;padding:.26rem 0;border-bottom:1px solid var(--gb);display:flex;gap:.4rem;align-items:flex-start;color:var(--navy);}
+.vl li:last-child{border-bottom:none;}
+.arr{font-family:'DM Mono',monospace;font-size:9px;flex-shrink:0;margin-top:1px;}
+.vc.s .arr{color:var(--sell);}.vc.h .arr{color:var(--hold);}
+/* FOOTER */
+.foot{background:var(--navy);padding:1rem 2.5rem;display:flex;align-items:center;justify-content:space-between;gap:1.5rem;margin-top:1.75rem;}
+.fl{display:flex;flex-direction:column;}
+.flw{font-family:'Cinzel',serif;font-size:10px;letter-spacing:.18em;color:var(--vpiw);text-transform:uppercase;}
+.flr{width:24px;height:1px;background:var(--gold);margin:3px 0;}
+.fli{font-family:'Cinzel',serif;font-size:7px;letter-spacing:.2em;color:var(--gold);text-transform:uppercase;}
+.fd{font-family:'Jost',sans-serif;font-size:9.5px;font-weight:300;color:var(--muted);line-height:1.6;max-width:560px;text-align:right;}
+.print-bar{background:var(--parch);border-bottom:1px solid var(--gb);padding:.75rem 2.5rem;display:flex;align-items:center;gap:1rem;}
+.print-btn{font-family:'Jost',sans-serif;font-size:10px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;padding:.5rem 1.25rem;border-radius:4px;border:1px solid var(--gold);color:var(--navy);background:white;cursor:pointer;}
+.print-btn:hover{background:var(--gold);color:white;}
+.print-note{font-family:'Jost',sans-serif;font-size:10px;color:var(--deduct);font-style:italic;}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="print-bar no-print">
+  <button class="print-btn" onclick="window.print()">Print / Save as PDF</button>
+  <span class="print-note">v4.1 · Fix 1: profit flow clarified · Fix 2: sr pref interest corrected to annual · All figures SSOT v3.5.5 + v4.4</span>
+</div>
+<div class="hdr">
+  <div class="logo-row">
+    <div class="logo"><span class="lw">Vantage Point</span><div class="lr"></div><span class="li">Investments</span></div>
+    <div class="lsep"></div>
+    <span class="dlbl">Strategy Comparison &nbsp;·&nbsp; Confidential &nbsp;·&nbsp; All figures from source spreadsheets</span>
+  </div>
+  <div class="title">Trade Point Industrial<br><em>Build &amp; Sell vs. Build &amp; Hold</em></div>
+  <div class="sub">Cape Coral, FL &nbsp;·&nbsp; 98,264 SF &nbsp;·&nbsp; 38 units &nbsp;·&nbsp; OZ Tract #12071980700 &nbsp;·&nbsp; TDC $21,371,295 &nbsp;·&nbsp; Raise $7,235,062 — Identical Both Strategies</div>
+  <div class="tabs">
+    <div class="tab a">Verified Comparison · v4.1</div>
+    <div class="tab s">Sell &nbsp;·&nbsp; SSOT v3.5.5</div>
+    <div class="tab h">Hold &nbsp;·&nbsp; v4.4</div>
+  </div>
+</div>
+<div class="mbar">
+  <div class="mi"><span class="ml">Active flex listings</span><span class="mv hot">1</span><span class="mn">Cape Coral submarket</span></div>
+  <div class="mi"><span class="ml">Industrial vacancy</span><span class="mv hot">3.7%</span><span class="mn">Tightest SW Florida</span></div>
+  <div class="mi"><span class="ml">3-yr rent growth</span><span class="mv hot">+30.6%</span><span class="mn">No new supply</span></div>
+  <div class="mi"><span class="ml">Gross revenue</span><span class="mv">$34,884,780</span><span class="mn">WF!B7 &nbsp;·&nbsp; $355/SF wtd</span></div>
+  <div class="mi"><span class="ml">Net project profit</span><span class="mv">$11,507,610</span><span class="mn">32.99% margin &nbsp;·&nbsp; WF!B12</span></div>
+  <div class="mi"><span class="ml">Total raise &nbsp;·&nbsp; both</span><span class="mv">$7,235,062</span><span class="mn">CS!B46</span></div>
+</div>
+<div class="body">
+<div class="sec">Investment thesis</div>
+<div class="thesis">
+  <div class="tc">
+    <div class="tch s"><span class="tbadge">Build &amp; Sell &nbsp;·&nbsp; Option B &nbsp;·&nbsp; SSOT v3.5.5</span><div class="thl">Capture scarcity premium while the window is open</div></div>
+    <div class="tb">
+      Cape Coral has 1 active flex listing. 38 independent SBA 504 closings at 10% down eliminate bulk risk entirely.
+      Phase 1 generates $8,039,549 after loan repayment <span class="src">CS!B30</span>, fully funding Phase 2 with a $5,405,206 surplus <span class="src">CS!B33</span> — zero second capital call.
+      The deal produces <strong>$11,507,610 total net profit</strong> <span class="src">WF!B12</span>.
+      Of that, the <strong>Co-GP equity tranche investor receives $8,694,126</strong> <span class="src">WF!D23</span>
+      (their $3,235,062 capital back + $970,518 pref + $4,488,546 profit split)
+      at a <strong>39.03% IRR</strong> <span class="src">WF!D30</span>.
+      VPI separately retains $4,488,546 as the GP 50% profit split <span class="src">WF!D22</span>.
+      See profit flow below.
+    </div>
+  </div>
+  <div class="tc">
+    <div class="tch h"><span class="tbadge">Build &amp; Hold &nbsp;·&nbsp; OZ &nbsp;·&nbsp; v4.4</span><div class="thl">Convert a capital gains event into a 10-year wealth-compounding engine</div></div>
+    <div class="tb">
+      For investors with a capital gain, the OZ structure eliminates the tax burden on Day 1.
+      Full $3,235,062 equity returned at Month 36 refi <span class="src">Ret!R20</span>.
+      Asset grows from $32,517,825 at refi <span class="src">Ass!R57</span> to $42,497,498 at Year 10 exit <span class="src">Ret!R39</span> as NNN rents escalate 3.00%/yr.
+      Co-GP equity investor total return: <strong>$16,727,808 · 5.17× EM</strong> <span class="src">Ret!R47/R49</span>.
+      100% of appreciation excluded from federal tax at exit.
+    </div>
+  </div>
+</div>
+<!-- PROFIT FLOW BOX -->
+<div class="profit-box">
+  <div>
+    <div class="pb-head s">How the $11,507,610 net profit is distributed &nbsp;<span class="src">WF!B12</span></div>
+    <div class="pb-body">
+      The $11,507,610 is the <em>total project profit</em> — not what investors receive in total. It splits across four slices per the waterfall tiers. Investors receive three slices; VPI keeps one.
+      <br><br>
+      <div class="pf-row"><span class="pf-label">Sr pref interest — 13% × $4M × 3 yrs &nbsp;<span class="src">WF!C21</span></span><span class="pf-val">$1,560,000</span></div>
+      <div class="pf-row"><span class="pf-label">Co-GP equity pref — 10% × $3.24M × 3 yrs &nbsp;<span class="src">WF!D21</span></span><span class="pf-val">$970,518</span></div>
+      <div class="pf-row"><span class="pf-label">Co-GP equity 50% profit split &nbsp;<span class="src">WF!D22</span></span><span class="pf-val wh">$4,488,546</span></div>
+      <div class="pf-row"><span class="pf-label">VPI GP 50% profit split (retained by sponsor) &nbsp;<span class="src">WF!D22</span></span><span class="pf-val vpi">$4,488,546</span></div>
+      <div class="pf-row total"><span class="pf-label">Total = net project profit &nbsp;<span class="src">WF!B12</span></span><span class="pf-val">$11,507,610</span></div>
+      <br>
+      <span style="font-size:10.5px;color:var(--deduct);">Combined investor return = $7,235,062 capital back + $7,019,064 profit share = <strong>$14,254,126</strong> &nbsp;<span class="src">WF!E23</span>. VPI retains $4,488,546 separately plus fees embedded in TDC.</span>
+    </div>
+  </div>
+  <div>
+    <div class="pb-head s">Why combined Option B return is $14,254,126 not $14,399,703</div>
+    <div class="pb-body">
+      Option A (single tranche, no sr pref split) returns <strong>$14,399,703</strong> <span class="src">WF!B23</span> combined — more than Option B because there is no fixed-rate pref cost reducing the pool.<br><br>
+      Option B is $145,578 less because the sr pref investor takes a fixed $1,560,000 total interest that caps their return <em>and</em> reduces the profit available for the 50/50 split.<br><br>
+      The trade-off: the <strong>equity tranche IRR jumps from 25.79% to 39.03%</strong> because the same above-pref profit pool is split against a smaller equity base ($3,235,062 instead of $7,235,062).<br><br>
+      <div class="pf-row"><span class="pf-label">Co-GP equity tranche return &nbsp;<span class="src">WF!D23</span></span><span class="pf-val wh">$8,694,126</span></div>
+      <div class="pf-row"><span class="pf-label">Sr pref tranche return &nbsp;<span class="src">WF!C23</span></span><span class="pf-val">$5,560,000</span></div>
+      <div class="pf-row total"><span class="pf-label">Option B combined all investors &nbsp;<span class="src">WF!E23</span></span><span class="pf-val">$14,254,126</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="sec">Full comparison — every figure from source spreadsheet</div>
+<table class="tbl">
+  <thead><tr>
+    <th class="lh">Metric &amp; source cell</th>
+    <th class="sh">Build &amp; Sell &nbsp;·&nbsp; SSOT v3.5.5</th>
+    <th class="hh">Build &amp; Hold &nbsp;·&nbsp; v4.4</th>
+  </tr></thead>
+  <tbody>
+    <tr><td class="ll sr" colspan="3">Capital structure — identical both strategies</td></tr>
+    <tr><td class="ll">Total raise <span class="src">CS!B46</span></td><td class="sc">$7,235,062</td><td class="hc">$7,235,062</td></tr>
+    <tr><td class="ll">Senior pref tranche <span class="src">CS!B47</span></td><td class="sc">$4,000,000</td><td class="hc">$4,000,000</td></tr>
+    <tr><td class="ll">Co-GP equity tranche <span class="src">CS!B48</span></td><td class="sc">$3,235,062</td><td class="hc">$3,235,062</td></tr>
+    <tr><td class="ll">Senior pref rate <span class="src">Ass!B43 / Ass!R50</span></td><td class="sc">13.00% fixed · 36 months</td><td class="hc">11.00% I/O · 120 months</td></tr>
+    <tr><td class="ll">Equity tranche pref rate <span class="src">Ass!B54 / Ass!R49</span></td><td class="sc">10.00%</td><td class="hc">7.00%</td></tr>
+    <tr><td class="ll">Profit split above pref <span class="src">Ass!B44</span></td><td class="sc">50/50 Co-GP / VPI</td><td class="hc">50/50 Co-GP / VPI</td></tr>
+    <tr><td class="ll">Hold period <span class="src">Ass!B48 / Ass!R12</span></td><td class="sc ws">36 months</td><td class="hc">10 years (120 months)</td></tr>
+    <tr><td class="ll">Second capital call</td><td class="sc ws">None</td><td class="hc wh">None</td></tr>
+    <tr><td class="ll sr" colspan="3">TDC — identical both strategies (SSOT PB!E38)</td></tr>
+    <tr><td class="ll">Total development cost <span class="src">PB!E38</span></td><td class="sc">$21,371,295</td><td class="hc">$21,371,295</td></tr>
+    <tr><td class="ll">TDC per SF <span class="src">PB!F38</span></td><td class="sc">$217.49/SF</td><td class="hc">$217.49/SF</td></tr>
+    <tr><td class="ll">Phase 2 funding</td><td class="sc ws">$8,039,549 Ph1 proceeds after loan <span class="src">CS!B30</span></td><td class="hc wh">$8,093,094 Ph1 equity uplift <span class="src">Ass!R30</span></td></tr>
+    <tr><td class="ll">Phase 2 surplus</td><td class="sc ws">$5,405,206 <span class="src">CS!B33</span></td><td class="hc wh">$5,458,750 <span class="src">Ass!R32</span></td></tr>
+    <tr><td class="ll sr" colspan="3">Project economics — sell strategy only (SSOT Waterfall &amp; Returns tab)</td></tr>
+    <tr><td class="ll">Ph1 gross revenue <span class="src">WF!B4</span> · 51,088 SF × $350</td><td class="sc ws">$17,880,800</td><td class="hc neu">N/A</td></tr>
+    <tr><td class="ll">Ph2A gross revenue <span class="src">WF!B5</span> · 33,320 SF × $357.50</td><td class="sc ws">$11,911,900</td><td class="hc neu">N/A</td></tr>
+    <tr><td class="ll">Ph2B gross revenue <span class="src">WF!B6</span> · 13,856 SF × $367.50</td><td class="sc ws">$5,092,080</td><td class="hc neu">N/A</td></tr>
+    <tr><td class="ll">Gross revenue — all 3 phases <span class="src">WF!B7</span></td><td class="sc ws">$34,884,780</td><td class="hc neu">N/A</td></tr>
+    <tr><td class="ll">Broker 5% + closing 0.75% <span class="src">WF!B8+B9</span></td><td class="sc">$-2,005,875</td><td class="hc neu">N/A</td></tr>
+    <tr><td class="ll">Net sale proceeds — all 3 phases <span class="src">WF!B10</span></td><td class="sc ws">$32,878,905</td><td class="hc neu">N/A</td></tr>
+    <tr><td class="ll">Less TDC <span class="src">WF!B11</span></td><td class="sc">$-21,371,295</td><td class="hc neu">N/A</td></tr>
+    <tr><td class="ll">Net project profit — whole deal <span class="src">WF!B12</span></td><td class="sc ws">$11,507,610</td><td class="hc neu">N/A</td></tr>
+    <tr><td class="ll">Profit margin <span class="src">WF!B13</span></td><td class="sc ws">32.99%</td><td class="hc neu">N/A</td></tr>
+    <tr><td class="note-cell" colspan="3">↑ The $11,507,610 net profit splits four ways: sr pref interest $1,560,000 + eq pref $970,518 + Co-GP 50% split $4,488,546 + VPI GP 50% split $4,488,546. Investors combined receive $7,235,062 capital back + $7,019,064 profit share = $14,254,126 (WF!E23). See profit flow box above.</td></tr>
+    <tr><td class="ll sr" colspan="3">Stabilized economics — hold strategy (v4.4 Assumptions)</td></tr>
+    <tr><td class="ll">NNN rate <span class="src">Ass!R38</span></td><td class="sc neu">N/A</td><td class="hc wh">$24.00/SF blended</td></tr>
+    <tr><td class="ll">Rent escalation <span class="src">Ass!R39</span></td><td class="sc neu">N/A</td><td class="hc wh">3.00%/yr</td></tr>
+    <tr><td class="ll">Stabilized NOI Year 1 <span class="src">Ass!R56</span></td><td class="sc neu">N/A</td><td class="hc wh">$2,113,659</td></tr>
+    <tr><td class="ll">Asset value at Month 36 refi <span class="src">Ass!R57</span> · 6.5% cap</td><td class="sc neu">N/A</td><td class="hc wh">$32,517,825</td></tr>
+    <tr><td class="ll">Asset value at Year 10 exit <span class="src">Ret!R39</span> · 6.5% cap on escalated NOI</td><td class="sc neu">N/A</td><td class="hc wh">$42,497,498 ($432/SF)</td></tr>
+    <tr><td class="ll">Refi loan 70% LTV <span class="src">Ass!R58</span></td><td class="sc neu">N/A</td><td class="hc wh">$22,762,478</td></tr>
+    <tr><td class="ll">Annual debt service <span class="src">Ret!R21</span> · 6.75% · 25-yr am</td><td class="sc neu">N/A</td><td class="hc wh">$1,887,223</td></tr>
+    <tr><td class="ll">DSCR Year 1 gross <span class="src">Ass!R61</span></td><td class="sc neu">N/A</td><td class="hc warn-c">1.12× ⚠ below 1.25× lender min</td></tr>
+    <tr><td class="ll sr" colspan="3">Senior pref tranche returns ($4,000,000 invested)</td></tr>
+    <tr><td class="ll">Annual interest &nbsp;<span class="src">Ass!B43 × CS!B47 &nbsp;/&nbsp; Ass!R50 × Ret!R5</span></td>
+      <td class="sc">$520,000/yr × 3 yrs = $1,560,000 total</td>
+      <td class="hc wh">$440,000/yr × 10 yrs = $4,400,000 total</td></tr>
+    <tr><td class="ll">Total pref return <span class="src">WF!C23 / Ret!R11</span></td><td class="sc">$5,560,000</td><td class="hc wh">$8,400,000</td></tr>
+    <tr><td class="ll">Pref equity multiple</td><td class="sc">1.39×</td><td class="hc wh">2.10×</td></tr>
+    <tr><td class="ll">Pref yield <span class="src">WF!C30 / Ass!R50</span></td><td class="sc">13.00% fixed · no profit split</td><td class="hc">11.00% I/O · no profit split</td></tr>
+    <tr><td class="ll sr" colspan="3">Co-GP equity tranche returns ($3,235,062 invested)</td></tr>
+    <tr><td class="ll">Capital returned at Month 36 <span class="src">CS!B48 / Ret!R20</span></td><td class="sc ws">$3,235,062 — exit</td><td class="hc wh">$3,235,062 — refi · 100% ✓</td></tr>
+    <tr><td class="ll">First cash distribution <span class="src">Ass!R65</span></td><td class="sc ws">Month 36 — lump sum</td><td class="hc">Op Year 5</td></tr>
+    <tr><td class="ll">10-yr operating distributions <span class="src">Ret!R35</span></td><td class="sc neu">N/A — lump exit</td><td class="hc wh">$1,130,137</td></tr>
+    <tr><td class="ll">Exit equity Co-GP 50% <span class="src">Ret!R42</span></td><td class="sc neu">Included in total below</td><td class="hc wh">$12,362,609</td></tr>
+    <tr><td class="ll">Total equity tranche return <span class="src">WF!D23 / Ret!R47</span></td><td class="sc"><span class="big ws">$8,694,126</span></td><td class="hc"><span class="big wh">$16,727,808</span></td></tr>
+    <tr><td class="ll">Equity multiple <span class="src">WF!D29 / Ret!R49</span></td><td class="sc"><span class="big ws">2.69×</span></td><td class="hc"><span class="big wh">5.17×</span></td></tr>
+    <tr><td class="ll">Equity IRR <span class="src">WF!D30 / Ret!R50</span></td><td class="sc"><span class="big ws">39.03%</span></td><td class="hc"><span class="big">17.86%</span></td></tr>
+    <tr><td class="ll">After-tax equity multiple <span class="src">Ret!R52</span></td><td class="sc neu">~2.05× est.*</td><td class="hc wh">6.16×</td></tr>
+    <tr><td class="ll">After-tax IRR <span class="src">Ret!R53</span></td><td class="sc neu">~27% est.*</td><td class="hc wh">19.95%</td></tr>
+    <tr><td class="ll sr" colspan="3">Option A — full equity single tranche</td></tr>
+    <tr><td class="ll">Total return <span class="src">WF!B23</span></td><td class="sc">$14,399,703</td><td class="hc neu">N/A</td></tr>
+    <tr><td class="ll">Equity multiple <span class="src">WF!B29</span></td><td class="sc">1.99×</td><td class="hc neu">N/A</td></tr>
+    <tr><td class="ll">IRR <span class="src">WF!B30</span></td><td class="sc">25.79%</td><td class="hc neu">N/A</td></tr>
+    <tr><td class="ll sr" colspan="3">Combined returns — both tranches ($7,235,062)</td></tr>
+    <tr><td class="ll">Total return all investors <span class="src">WF!E23 / calc</span></td><td class="sc">$14,254,126</td><td class="hc wh">$25,127,808</td></tr>
+    <tr><td class="ll">VPI GP 50% profit split retained <span class="src">WF!D22</span></td><td class="sc" style="color:var(--sell);font-weight:500;">$4,488,546 — retained by VPI</td><td class="hc neu">Separate — see v4.4 Returns</td></tr>
+    <tr><td class="ll">Blended EM all investor capital <span class="src">WF!E29 / calc</span></td><td class="sc">1.97×</td><td class="hc wh">3.47×</td></tr>
+    <tr><td class="ll sr" colspan="3">OZ tax benefit — equity tranche investor only</td></tr>
+    <tr><td class="ll">Capital gain deferral to 12/31/2026</td><td class="sc neu">No</td><td class="hc wh">Yes</td></tr>
+    <tr><td class="ll">Appreciation exclusion at 10-yr hold</td><td class="sc neu">No</td><td class="hc wh">100% federal</td></tr>
+    <tr><td class="ll">Est. OZ tax savings <span class="src">Ret!R51</span></td><td class="sc neu">—</td><td class="hc wh">$3,211,274</td></tr>
+    <tr><td class="ll">Federal exit tax</td><td class="sc">Yes — LTCG rate</td><td class="hc wh">$0</td></tr>
+  </tbody>
+</table>
+
+<div class="sec">Hold — annual distributions to Co-GP equity investor <span class="src">v4.4 Ret!R25–R42</span></div>
+<table class="dtbl">
+  <thead><tr>
+    <th class="dh">Period</th>
+    <th class="sh2">Build &amp; Sell · equity tranche</th>
+    <th class="hh2">Build &amp; Hold · Co-GP cash</th>
+    <th class="hh2">Hold · Co-GP CoC</th>
+    <th class="hh2">Hold · Sponsor cash</th>
+  </tr></thead>
+  <tbody>
+    <tr><td class="yr">Mo 0–24 · Construction</td><td class="sc zero">$0</td><td class="hc zero">$0 · No income</td><td class="hc zero">—</td><td class="hc zero">$0</td></tr>
+    <tr><td class="yr">Mo 25–36 · Lease-up</td><td class="sc zero">$0</td><td class="hc zero">$0 · Pre-refi</td><td class="hc zero">—</td><td class="hc zero">$0</td></tr>
+    <tr><td class="yr">Month 36 · Refi / Exit</td><td class="sc ws" style="font-weight:500;">Exit: $8,694,126 <span class="src">WF!D23</span></td><td class="hc wh" style="font-weight:500;">Cap returned: $3,235,062 <span class="src">Ret!R20</span></td><td class="hc">100% ✓</td><td class="hc zero">$0</td></tr>
+    
+    <tr><td class="yr">Op Year 1 · Mo 37–48 <span class="src">Ret!R25</span></td>
+    <td class="sc neu">N/A</td>
+    <td class="hc zero">$0</td>
+    <td class="hc zero">0.0%</td>
+    <td class="hc zero">$0</td></tr>
+    <tr><td class="yr">Op Year 2 · Mo 49–60 <span class="src">Ret!R26</span></td>
+    <td class="sc neu">N/A</td>
+    <td class="hc zero">$0</td>
+    <td class="hc zero">0.0%</td>
+    <td class="hc zero">$0</td></tr>
+    <tr><td class="yr">Op Year 3 · Mo 61–72 <span class="src">Ret!R27</span></td>
+    <td class="sc neu">N/A</td>
+    <td class="hc zero">$0</td>
+    <td class="hc zero">0.0%</td>
+    <td class="hc zero">$0</td></tr>
+    <tr><td class="yr">Op Year 4 · Mo 73–84 <span class="src">Ret!R28</span></td>
+    <td class="sc neu">N/A</td>
+    <td class="hc zero">$0</td>
+    <td class="hc zero">0.0%</td>
+    <td class="hc zero">$0</td></tr>
+    <tr><td class="yr">Op Year 5 · Mo 85–96 <span class="src">Ret!R29</span></td>
+    <td class="sc neu">N/A</td>
+    <td class="hc wh">$28,352</td>
+    <td class="hc ">0.9%</td>
+    <td class="hc zero">$0</td></tr>
+    <tr><td class="yr">Op Year 6 · Mo 97–108 <span class="src">Ret!R30</span></td>
+    <td class="sc neu">N/A</td>
+    <td class="hc wh">$99,462</td>
+    <td class="hc ">3.1%</td>
+    <td class="hc zero">$0</td></tr>
+    <tr><td class="yr">Op Year 7 · Mo 109–120 <span class="src">Ret!R31</span></td>
+    <td class="sc neu">N/A</td>
+    <td class="hc wh">$172,704</td>
+    <td class="hc ">5.3%</td>
+    <td class="hc zero">$0</td></tr>
+    <tr><td class="yr">Op Year 8 · Mo 121–132 <span class="src">Ret!R32</span></td>
+    <td class="sc neu">N/A</td>
+    <td class="hc wh">$237,299</td>
+    <td class="hc ">7.3%</td>
+    <td class="hc ">$10,845</td></tr>
+    <tr><td class="yr">Op Year 9 · Mo 133–144 <span class="src">Ret!R33</span></td>
+    <td class="sc neu">N/A</td>
+    <td class="hc wh">$276,151</td>
+    <td class="hc ">8.5%</td>
+    <td class="hc ">$49,697</td></tr>
+    <tr><td class="yr">Op Year 10 · Mo 145–156 <span class="src">Ret!R34</span></td>
+    <td class="sc neu">N/A</td>
+    <td class="hc wh">$316,168</td>
+    <td class="hc ">9.8%</td>
+    <td class="hc ">$89,714</td></tr>
+    <tr><td class="yr" style="font-weight:500;">Year 10 Exit · Month 156 <span class="src">Ret!R39–R42</span></td><td class="sc neu">N/A</td><td class="hc wh" style="font-weight:500;">$12,362,609</td><td class="hc wh" style="font-weight:500;">382%</td><td class="hc" style="font-weight:500;">50% net equity</td></tr>
+    <tr><td class="yr" style="font-weight:500;color:var(--navy);">Totals</td><td class="sc ws" style="font-weight:500;">$8,694,126 <span class="src">WF!D23</span></td><td class="hc wh" style="font-weight:500;">$16,727,808 <span class="src">Ret!R47</span></td><td class="hc wh" style="font-weight:500;">5.17×</td><td class="hc" style="font-weight:500;">$150,256 <span class="src">Ret!R36</span></td></tr>
+  </tbody>
+</table>
+
+<div class="sec">Why the sell case is time-sensitive</div>
+<div class="scar">
+  <div class="sct">Cape Coral industrial scarcity — the window is now</div>
+  <div class="scg">
+    <div><span class="scv">1</span><span class="scl">Active flex listing in Cape Coral</span></div>
+    <div><span class="scv">38</span><span class="scl">Independent SBA 504 closings · 10% down · zero bulk risk</span></div>
+    <div><span class="scv">$350–368</span><span class="scl">Per SF · Ph1 $350 / Ph2A $357.50 / Ph2B $367.50 · Ass!B12–14</span></div>
+    <div><span class="scv">$11,507,610</span><span class="scl">Net project profit · 32.99% margin · WF!B12</span></div>
+    <div><span class="scv">39.03%</span><span class="scl">Eq tranche IRR · top of market · 36-month hold · WF!D30</span></div>
+  </div>
+</div>
+
+<div class="sec">Why the hold case is a tax-advantage argument</div>
+<div class="oz">
+  <div class="ozh">
+    <div class="oze">Opportunity Zone · Build &amp; Hold · v4.4 — all figures from source tabs</div>
+    <div class="ozhl">Turning a capital gains liability into a $42,497,498 asset at Year 10 — $0 federal exit tax</div>
+  </div>
+  <div class="ozr">
+    <div class="ozc">For an investor facing a capital gain event, the OZ structure converts an immediate federal tax liability into a 10-year compounding position. Asset grows from $32,517,825 at Month 36 refi to $42,497,498 at Year 10 exit as 3.00% annual NNN escalation compounds over 10 operating years. Full equity principal $3,235,062 returned at Month 36 — zero capital at risk for the remaining 7 years. Co-GP exit share: 50% of $24,725,218 net equity = $12,362,609. Plus $1,130,137 in operating distributions. Total Co-GP equity return $16,727,808 · 5.17× EM · 17.86% IRR. OZ estimated tax savings $3,211,274 · after-tax EM 6.16× · after-tax IRR 19.95%.</div>
+    <div class="ozs">
+      <div class="ozst"><span class="ozsl">Exit asset value Y10 · Ret!R39</span><span class="ozsv">$42,497,498</span></div>
+      <div class="ozst"><span class="ozsl">Co-GP total return · Ret!R47</span><span class="ozsv">$16,727,808</span></div>
+      <div class="ozst"><span class="ozsl">After-tax EM · Ret!R52</span><span class="ozsv">6.16×</span></div>
+      <div class="ozst"><span class="ozsl">OZ tax savings · Ret!R51</span><span class="ozsv">$3,211,274</span></div>
+      <div class="ozst"><span class="ozsl">Federal exit tax</span><span class="ozsv">$0</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="sec">Strengths and considerations</div>
+<div class="pc">
+  <div class="pcc s">
+    <div class="pch">Build &amp; Sell — strengths · SSOT v3.5.5</div>
+    <div class="pci">
+      <div class="pi"><span class="pd"></span><span>39.03% equity IRR on $3,235,062 invested — top of market for 36-month flex industrial <span class="src">WF!D30</span></span></div>
+      <div class="pi"><span class="pd"></span><span>$11,507,610 total net profit · 32.99% margin — fully proven SSOT model <span class="src">WF!B12</span></span></div>
+      <div class="pi"><span class="pd"></span><span>1 active flex listing in Cape Coral — scarcest product in SW Florida</span></div>
+      <div class="pi"><span class="pd"></span><span>38 independent SBA 504 closings at 10% down — zero bulk discount risk</span></div>
+      <div class="pi"><span class="pd"></span><span>$8,039,549 Ph1 proceeds after loan repayment fund Ph2 with $5,405,206 surplus — no second call <span class="src">CS!B30/B33</span></span></div>
+      <div class="pi"><span class="pd"></span><span>Live investor site — SSOT-verified model ready for distribution today</span></div>
+    </div>
+    <div class="conh">Considerations</div>
+    <div class="conb">
+      <div class="ci"><span class="csq"></span><span>2.69× EM on equity tranche — lower absolute wealth creation vs. hold <span class="src">WF!D29</span></span></div>
+      <div class="ci"><span class="csq"></span><span>Exit gain fully taxable at LTCG rates — no OZ benefit</span></div>
+      <div class="ci"><span class="csq"></span><span>Absorption risk — 2 units/month consistent sell-through required</span></div>
+      <div class="ci"><span class="csq"></span><span>No ongoing income or long-term asset ownership after exit</span></div>
+    </div>
+  </div>
+  <div class="pcc h">
+    <div class="pch">Build &amp; Hold · OZ — strengths · v4.4</div>
+    <div class="pci">
+      <div class="pi"><span class="pd"></span><span>5.17× pre-tax EM · 6.16× after-tax with OZ exclusion <span class="src">Ret!R49/R52</span></span></div>
+      <div class="pi"><span class="pd"></span><span>Asset grows $32,517,825 → $42,497,498 from refi to exit — 3% NNN escalation <span class="src">Ass!R57/Ret!R39</span></span></div>
+      <div class="pi"><span class="pd"></span><span>100% of QOF appreciation excluded from federal tax at 10-year exit</span></div>
+      <div class="pi"><span class="pd"></span><span>$3,211,274 est. OZ tax savings — capital already owed in taxes <span class="src">Ret!R51</span></span></div>
+      <div class="pi"><span class="pd"></span><span>Full $3,235,062 equity returned Month 36 — zero capital at risk after <span class="src">Ret!R20</span></span></div>
+      <div class="pi"><span class="pd"></span><span>Ph1 equity $8,093,094 fully funds Ph2 — no second capital call <span class="src">Ass!R30</span></span></div>
+    </div>
+    <div class="conh">Considerations</div>
+    <div class="conb">
+      <div class="ci"><span class="csq"></span><span>17.86% equity IRR — lower annualized vs. sell strategy <span class="src">Ret!R50</span></span></div>
+      <div class="ci"><span class="csq"></span><span>Op Years 1–4: $0 distributions — exit-focused deal <span class="src">Ret!R25–R28</span></span></div>
+      <div class="ci"><span class="csq"></span><span>DSCR 1.12× at refi — lender discussion required <span class="src">Ass!R61</span></span></div>
+      <div class="ci"><span class="csq"></span><span>10-year commitment for OZ exclusion to vest</span></div>
+      <div class="ci"><span class="csq"></span><span>Sr pref rate 11.00% vs SSOT 13.00% — requires pref investor agreement</span></div>
+      <div class="ci"><span class="csq"></span><span>Qualified OZ counsel required before presenting tax benefit</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="sec">Which strategy fits which investor</div>
+<div class="vd">
+  <div class="vc s">
+    <div class="ve">Build &amp; Sell · ideal investor profile</div>
+    <div class="vhl">Maximum annualized return with a clean 36-month exit</div>
+    <ul class="vl">
+      <li><span class="arr">→</span><span>Capital without a qualifying gain event — OZ benefit unavailable</span></li>
+      <li><span class="arr">→</span><span>Investors benchmarking against 20–25% IRR industrial targets</span></li>
+      <li><span class="arr">→</span><span>Capital that needs to recycle quickly into the next opportunity</span></li>
+      <li><span class="arr">→</span><span>Investors who want a fixed 36-month exit date, no long hold</span></li>
+      <li><span class="arr">→</span><span>Family offices prioritizing velocity and IRR over after-tax wealth multiple</span></li>
+    </ul>
+  </div>
+  <div class="vc h">
+    <div class="ve">Build &amp; Hold · OZ · ideal investor profile</div>
+    <div class="vhl">Long-term after-tax wealth creation with a capital gain to shelter</div>
+    <ul class="vl">
+      <li><span class="arr">→</span><span>Business owners, property sellers, equity liquidity events 2025–2026</span></li>
+      <li><span class="arr">→</span><span>Investors optimizing for after-tax wealth multiple — not annual yield</span></li>
+      <li><span class="arr">→</span><span>High-net-worth individuals in the 37% federal tax bracket</span></li>
+      <li><span class="arr">→</span><span>Family offices with confirmed 10-year horizon and OZ eligibility</span></li>
+      <li><span class="arr">→</span><span>Investors seeking NNN real estate exposure without sell-through risk</span></li>
+    </ul>
+  </div>
+</div>
+</div>
+<div class="foot">
+  <div class="fl"><span class="flw">Vantage Point</span><div class="flr"></div><span class="fli">Investments</span></div>
+  <div class="fd">v4.1 · All figures read directly from SSOT v3.5.5 (WF, CS, Ass, PB tabs) and Build &amp; Hold v4.4 (Ret, Ass tabs). Source cell shown inline. For discussion only — not a securities offering. *After-tax sell IRR est. at ~23.8% LTCG. OZ benefit requires qualified OZ counsel review. rob@vpiflorida.com · Cape Coral, FL</div>
+</div>
+</div>
+</body>
+</html>
