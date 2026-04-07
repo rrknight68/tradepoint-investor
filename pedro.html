@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Trade Point — GP Analysis · Robert Pedro · VPI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Jost:wght@300;400;500&family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#0D2B4E;--mid:#1A3D66;--gold:#C89A3A;--glt:#E2B95A;
+  --gb:rgba(200,154,58,.18);--gbs:rgba(200,154,58,.35);
+  --cream:#F9F7F3;--parch:#F2EDE3;--vpiw:#F0EDE5;
+  --muted:#8A95A8;--deduct:#5A6478;
+  --sell:#185FA5;--sellm:#378ADD;--selllt:#EAF2FC;
+  --hold:#8B3A00;--holdlt:#FFF3E0;
+  --green:#0F6E56;--greenlt:#E4F5EF;
+  --warn:#CC0000;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'DM Sans',sans-serif;color:var(--navy);background:var(--cream);font-size:13px;line-height:1.5;}
+.wrap{max-width:1000px;margin:0 auto;}
+@media print{body{background:white;}.wrap{max-width:100%;}.no-print{display:none;}*{-webkit-print-color-adjust:exact;print-color-adjust:exact;}}
+
+/* HEADER */
+.hdr{background:var(--navy);padding:2rem 2.5rem 0;}
+.logo-row{display:flex;align-items:center;gap:.9rem;margin-bottom:1.4rem;}
+.logo{display:flex;flex-direction:column;}
+.lw{font-family:'Cinzel',serif;font-size:13px;letter-spacing:.18em;color:var(--vpiw);text-transform:uppercase;}
+.lr{width:28px;height:1px;background:var(--gold);margin:4px 0;}
+.li{font-family:'Cinzel',serif;font-size:8.5px;letter-spacing:.2em;color:var(--gold);text-transform:uppercase;}
+.lsep{width:1px;height:28px;background:rgba(200,154,58,.25);}
+.dlbl{font-family:'Jost',sans-serif;font-size:9.5px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);}
+.title{font-family:'Cormorant Garamond',serif;font-size:30px;font-weight:600;color:var(--cream);line-height:1.1;margin-bottom:.3rem;}
+.title em{color:var(--glt);font-style:italic;}
+.sub{font-family:'Jost',sans-serif;font-size:11px;font-weight:300;color:var(--muted);margin-bottom:1.75rem;}
+.tabs{display:flex;border-top:1px solid rgba(200,154,58,.18);}
+.tab{font-family:'Jost',sans-serif;font-size:10px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;padding:.6rem 1.3rem;color:var(--muted);border-right:1px solid rgba(200,154,58,.1);}
+.tab.s{color:#7AB3E8;border-bottom:3px solid var(--sellm);}
+.tab.a{color:var(--gold);border-bottom:3px solid var(--gold);}
+
+/* BODY */
+.body{padding:1.75rem 2.5rem;}
+.sec{font-family:'Jost',sans-serif;font-size:9px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);padding-bottom:.45rem;border-bottom:1px solid var(--gb);margin-bottom:1.1rem;margin-top:1.75rem;}
+.sec:first-child{margin-top:0;}
+
+/* HEADLINE CARD */
+.headline{background:var(--navy);border-radius:10px;padding:2rem 2.5rem;margin-bottom:1.75rem;}
+.hl-eyebrow{font-family:'Cinzel',serif;font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:.5rem;}
+.hl-title{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:600;color:var(--cream);line-height:1.2;margin-bottom:1rem;}
+.hl-title em{color:var(--glt);font-style:italic;}
+.hl-body{font-size:13px;line-height:1.8;color:rgba(249,247,243,.75);}
+.hl-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:1.5rem;border-top:1px solid rgba(200,154,58,.2);padding-top:1.5rem;}
+.hl-stat{display:flex;flex-direction:column;gap:3px;}
+.hl-sl{font-family:'Jost',sans-serif;font-size:8px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);}
+.hl-sv{font-family:'DM Mono',monospace;font-size:22px;font-weight:500;color:white;}
+.hl-sn{font-size:10px;color:var(--muted);font-style:italic;}
+
+/* YEAR TABLE */
+.ytbl{width:100%;border-collapse:collapse;border:1px solid var(--gb);border-radius:8px;overflow:hidden;margin-bottom:0;}
+.ytbl thead th{padding:.6rem 1rem;font-family:'Jost',sans-serif;font-size:8.5px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;}
+.ytbl .lh{background:var(--navy);color:var(--gold);text-align:left;width:180px;}
+.ytbl .ph{background:var(--mid);color:#7AB3E8;text-align:center;}
+.ytbl .ih{background:var(--green);color:white;text-align:center;}
+.ytbl .gh{background:var(--sell);color:white;text-align:center;}
+.ytbl tbody td{padding:.5rem 1rem;border-top:1px solid var(--gb);}
+.ll{background:var(--parch);font-size:11.5px;color:var(--navy);}
+.pc{background:rgba(24,95,165,.05);text-align:center;font-family:'DM Mono',monospace;font-size:12px;}
+.ic{background:rgba(15,110,86,.05);text-align:center;font-family:'DM Mono',monospace;font-size:12px;}
+.gc{background:rgba(24,95,165,.06);text-align:center;font-family:'DM Mono',monospace;font-size:12px;}
+.sr{background:var(--navy);color:var(--muted);font-family:'Jost',sans-serif;font-size:8px;letter-spacing:.1em;text-transform:uppercase;padding:.4rem 1rem;}
+.pwin{color:var(--sell);font-weight:500;}
+.gzero{color:var(--deduct);}
+.gbig{color:var(--green);font-weight:500;font-size:14px;}
+.warn{color:var(--warn);font-style:italic;font-size:10.5px;}
+.highlight-row td{background:#FFF9EC !important;border-top:2px solid var(--gold) !important;}
+
+/* COMPARISON CARDS */
+.cmp{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;margin-bottom:0;}
+.cc{border-radius:8px;overflow:hidden;border:1px solid var(--gb);}
+.cc-hdr{padding:1rem 1.25rem;}
+.cc-hdr.sell{background:var(--sell);}
+.cc-hdr.hold{background:#7A3000;}
+.cc-badge{font-family:'Jost',sans-serif;font-size:7.5px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;padding:2px 8px;border-radius:20px;border:1px solid rgba(255,255,255,.3);color:rgba(255,255,255,.8);display:inline-block;margin-bottom:.5rem;}
+.cc-hl{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:600;color:white;line-height:1.25;}
+.cc-body{padding:1.1rem 1.25rem;background:white;}
+.cc-row{display:flex;justify-content:space-between;padding:.4rem 0;border-bottom:1px solid var(--gb);font-size:12px;}
+.cc-row:last-child{border-bottom:none;font-weight:500;}
+.cc-row.total{border-top:2px solid var(--navy);border-bottom:none;margin-top:4px;padding-top:6px;font-weight:500;}
+.cc-lbl{color:var(--deduct);}
+.cc-val{font-family:'DM Mono',monospace;color:var(--navy);}
+.cc-val.green{color:var(--green);font-weight:500;}
+.cc-val.warn{color:var(--warn);}
+
+/* VERDICT */
+.verdict{background:var(--navy);border-radius:10px;padding:1.75rem 2rem;margin-bottom:0;}
+.vd-title{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;color:var(--glt);margin-bottom:1rem;}
+.vd-points{display:flex;flex-direction:column;gap:.6rem;}
+.vd-pt{display:flex;gap:.75rem;align-items:flex-start;font-size:12.5px;line-height:1.65;color:rgba(249,247,243,.8);}
+.vd-num{font-family:'DM Mono',monospace;font-size:11px;color:var(--gold);background:rgba(200,154,58,.15);padding:1px 7px;border-radius:3px;flex-shrink:0;margin-top:2px;}
+
+/* FOOTER */
+.foot{background:var(--navy);padding:1rem 2.5rem;display:flex;align-items:center;justify-content:space-between;gap:1.5rem;margin-top:1.75rem;}
+.fl{display:flex;flex-direction:column;}
+.flw{font-family:'Cinzel',serif;font-size:10px;letter-spacing:.18em;color:var(--vpiw);text-transform:uppercase;}
+.flr{width:24px;height:1px;background:var(--gold);margin:3px 0;}
+.fli{font-family:'Cinzel',serif;font-size:7px;letter-spacing:.2em;color:var(--gold);text-transform:uppercase;}
+.fd{font-family:'Jost',sans-serif;font-size:9.5px;font-weight:300;color:var(--muted);line-height:1.6;max-width:560px;text-align:right;}
+.print-bar{background:var(--parch);border-bottom:1px solid var(--gb);padding:.75rem 2.5rem;display:flex;align-items:center;gap:1rem;}
+.print-btn{font-family:'Jost',sans-serif;font-size:10px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;padding:.5rem 1.25rem;border-radius:4px;border:1px solid var(--gold);color:var(--navy);background:white;cursor:pointer;}
+.print-btn:hover{background:var(--gold);color:white;}
+.print-note{font-family:'Jost',sans-serif;font-size:10px;color:var(--deduct);font-style:italic;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="print-bar no-print">
+  <button class="print-btn" onclick="window.print()">Print / Save as PDF</button>
+  <span class="print-note">Trade Point GP Analysis · Robert Pedro · Confidential · Vantage Point Investments</span>
+</div>
+
+<div class="hdr">
+  <div class="logo-row">
+    <div class="logo"><span class="lw">Vantage Point</span><div class="lr"></div><span class="li">Investments</span></div>
+    <div class="lsep"></div>
+    <span class="dlbl">GP Partner Analysis &nbsp;·&nbsp; Robert Pedro &nbsp;·&nbsp; Confidential</span>
+  </div>
+  <div class="title">Trade Point Industrial<br><em>Why We Should Sell, Not Hold</em></div>
+  <div class="sub">Cape Coral, FL &nbsp;·&nbsp; 98,264 SF &nbsp;·&nbsp; 38 units &nbsp;·&nbsp; $21.4M TDC &nbsp;·&nbsp; GP Analysis for Robert Pedro</div>
+  <div class="tabs">
+    <div class="tab a">GP Position</div>
+    <div class="tab s">Build &amp; Sell</div>
+  </div>
+</div>
+
+<div class="body">
+
+<!-- HEADLINE -->
+<div class="headline">
+  <div class="hl-eyebrow">The core argument</div>
+  <div class="hl-title">In the hold strategy, the pref investor<br>collects <em>$440,000/yr</em> while we wait 10 years</div>
+  <div class="hl-body">
+    As GP partners, our big payday in the hold strategy comes entirely at Year 10 exit — not before.
+    Meanwhile the senior pref investor collects $440,000 every single year just for holding their note.
+    Over 10 years that's $4.4M in interest income to someone who takes no construction risk, no lease-up risk,
+    and no market risk. We carry all the risk and wait the longest.
+    The build-and-sell gets both of us paid in 36 months — clean, fast, and we redeploy into the next deal.
+  </div>
+  <div class="hl-stats">
+    <div class="hl-stat">
+      <span class="hl-sl">GP bucket at sell · Month 36</span>
+      <span class="hl-sv">$4,488,546</span>
+      <span class="hl-sn">You + Robert Knight split this · WF!D22</span>
+    </div>
+    <div class="hl-stat">
+      <span class="hl-sl">Pref investor annual income (hold)</span>
+      <span class="hl-sv">$440,000/yr</span>
+      <span class="hl-sn">$440K/yr × 10 yrs while you wait</span>
+    </div>
+    <div class="hl-stat">
+      <span class="hl-sl">GP operating cash Yrs 1–7 (hold)</span>
+      <span class="hl-sv">$0</span>
+      <span class="hl-sn">Zero GP distributions for 7 years</span>
+    </div>
+  </div>
+</div>
+
+<!-- YEAR BY YEAR TABLE -->
+<div class="sec">Year by year — who gets paid what (hold strategy)</div>
+<table class="ytbl">
+  <thead><tr>
+    <th class="lh">Period</th>
+    <th class="ph">Pref Investor<br>$4M @ 11%</th>
+    <th class="ih">OZ Equity Investor<br>$3.24M</th>
+    <th class="gh">GP Bucket<br>You + Robert Knight</th>
+  </tr></thead>
+  <tbody>
+    <tr><td class="ll sr" colspan="4">Construction &amp; stabilization — Months 0–36</td></tr>
+    <tr><td class="ll">Months 0–36 · Construction + lease-up</td><td class="pc gzero">$0</td><td class="ic gzero">$0</td><td class="gc gzero">$0</td></tr>
+    <tr class="highlight-row"><td class="ll">Month 36 · <strong>Refi executes</strong></td><td class="pc pwin">$4M returned</td><td class="ic pwin">$3.24M returned</td><td class="gc gzero">$0 returned</td></tr>
+    <tr><td class="ll sr" colspan="4">Operating years — Months 37–156 · Pref investor collects $440,000 every year</td></tr>
+    <tr><td class="ll">Op Year 1 · Mo 37–48</td><td class="pc pwin">$440,000</td><td class="ic gzero">$0</td><td class="gc gzero">$0 <span class="warn">← 7 years of this</span></td></tr>
+    <tr><td class="ll">Op Year 2 · Mo 49–60</td><td class="pc pwin">$440,000</td><td class="ic gzero">$0</td><td class="gc gzero">$0</td></tr>
+    <tr><td class="ll">Op Year 3 · Mo 61–72</td><td class="pc pwin">$440,000</td><td class="ic gzero">$0</td><td class="gc gzero">$0</td></tr>
+    <tr><td class="ll">Op Year 4 · Mo 73–84</td><td class="pc pwin">$440,000</td><td class="ic gzero">$0</td><td class="gc gzero">$0</td></tr>
+    <tr><td class="ll">Op Year 5 · Mo 85–96</td><td class="pc pwin">$440,000</td><td class="ic">$28,352</td><td class="gc gzero">$0</td></tr>
+    <tr><td class="ll">Op Year 6 · Mo 97–108</td><td class="pc pwin">$440,000</td><td class="ic">$99,462</td><td class="gc gzero">$0</td></tr>
+    <tr><td class="ll">Op Year 7 · Mo 109–120</td><td class="pc pwin">$440,000</td><td class="ic">$172,704</td><td class="gc gzero">$0</td></tr>
+    <tr><td class="ll">Op Year 8 · Mo 121–132</td><td class="pc pwin">$440,000</td><td class="ic">$237,299</td><td class="gc">$10,845</td></tr>
+    <tr><td class="ll">Op Year 9 · Mo 133–144</td><td class="pc pwin">$440,000</td><td class="ic">$276,151</td><td class="gc">$49,697</td></tr>
+    <tr><td class="ll">Op Year 10 · Mo 145–156</td><td class="pc pwin">$440,000</td><td class="ic">$316,168</td><td class="gc">$89,714</td></tr>
+    <tr class="highlight-row"><td class="ll"><strong>Year 10 Exit · Month 156</strong></td><td class="pc gzero">$0</td><td class="ic gbig">$12,362,609</td><td class="gc gbig">$12,362,609</td></tr>
+    <tr><td class="ll" style="font-weight:500;">Totals</td>
+      <td class="pc pwin" style="font-weight:500;">$4,400,000 interest<br>+ $4M back</td>
+      <td class="ic" style="font-weight:500;">$16,727,808</td>
+      <td class="gc" style="font-weight:500;">$12,512,865</td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- NOTE -->
+<div style="background:var(--parch);border:1px solid var(--gb);border-radius:8px;padding:1rem 1.25rem;margin-top:1rem;font-size:12px;line-height:1.7;color:var(--navy);">
+  <strong>The math that matters:</strong> The pref investor collects $440,000 every year for 10 years = $4,400,000 in interest
+  while you and Robert Knight collect <strong>$150,256 combined</strong> over the entire operating period before the exit.
+  You are carrying the GP risk and doing the GP work for essentially zero annual income.
+  Your entire GP return is locked up until Year 10.
+</div>
+
+<!-- COMPARISON -->
+<div class="sec">Build &amp; sell vs. build &amp; hold — GP position compared</div>
+<div class="cmp">
+  <div class="cc">
+    <div class="cc-hdr sell">
+      <span class="cc-badge">Build &amp; Sell · Recommended</span>
+      <div class="cc-hl">Get paid in 36 months — clean exit, redeploy capital</div>
+    </div>
+    <div class="cc-body">
+      <div class="cc-row"><span class="cc-lbl">Time to GP payday</span><span class="cc-val green">36 months</span></div>
+      <div class="cc-row"><span class="cc-lbl">Pedro — pref tranche recovery</span><span class="cc-val">$917,400</span></div>
+      <div class="cc-row"><span class="cc-lbl">GP bucket — Robert K + Pedro</span><span class="cc-val green">$4,488,546</span></div>
+      <div class="cc-row"><span class="cc-lbl">Pref investor annual income</span><span class="cc-val green">$0 — deal is done</span></div>
+      <div class="cc-row"><span class="cc-lbl">Years waiting for GP payday</span><span class="cc-val green">3 years total</span></div>
+      <div class="cc-row"><span class="cc-lbl">Capital to redeploy after exit</span><span class="cc-val green">Yes — Month 36</span></div>
+      <div class="cc-row total"><span class="cc-lbl">GP bucket total</span><span class="cc-val green">$4,488,546 at Month 36</span></div>
+    </div>
+  </div>
+  <div class="cc">
+    <div class="cc-hdr hold">
+      <span class="cc-badge">Build &amp; Hold · Consider carefully</span>
+      <div class="cc-hl">Wait 10 years while pref investor collects $440K/yr salary</div>
+    </div>
+    <div class="cc-body">
+      <div class="cc-row"><span class="cc-lbl">Time to GP payday (real money)</span><span class="cc-val warn">10 years</span></div>
+      <div class="cc-row"><span class="cc-lbl">Pref investor annual income</span><span class="cc-val warn">$440,000/yr × 10 yrs</span></div>
+      <div class="cc-row"><span class="cc-lbl">GP distributions Yrs 1–7</span><span class="cc-val warn">$0</span></div>
+      <div class="cc-row"><span class="cc-lbl">GP distributions Yrs 8–10</span><span class="cc-val">$150,256 total</span></div>
+      <div class="cc-row"><span class="cc-lbl">GP exit share Year 10</span><span class="cc-val">$12,362,609</span></div>
+      <div class="cc-row"><span class="cc-lbl">Pref investor total income</span><span class="cc-val warn">$4,400,000 interest</span></div>
+      <div class="cc-row total"><span class="cc-lbl">GP bucket total (10 yrs)</span><span class="cc-val">$12,512,865 at Year 10</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- VERDICT -->
+<div class="sec">The recommendation</div>
+<div class="verdict">
+  <div class="vd-title">Sell at Month 36 — here's why it's the right move for both of us</div>
+  <div class="vd-points">
+    <div class="vd-pt"><span class="vd-num">01</span><span>The GP bucket pays <strong>$4,488,546</strong> at Month 36 in the sell strategy. That's your combined take — split between you and Robert Knight per your GP agreement — in 36 months flat. Clean close, no residual obligations.</span></div>
+    <div class="vd-pt"><span class="vd-num">02</span><span>In the hold strategy, the <strong>pref investor earns $440,000/yr</strong> for 10 years — $4,400,000 in total interest income — while the GP bucket earns <strong>$150,256 combined</strong> over the same period. They are getting paid a salary to wait. We are not.</span></div>
+    <div class="vd-pt"><span class="vd-num">03</span><span>The hold strategy's GP exit of <strong>$12,362,609</strong> at Year 10 is compelling — but it requires 10 years of patience while someone else collects the annual income. At 36 months we already have the right to exit and redeploy $4,488,546 into the next deal.</span></div>
+    <div class="vd-pt"><span class="vd-num">04</span><span>Pedro's pref tranche position recovers <strong>$917,400</strong> at Month 36 sell close — that's his $660K ($500K invested + $160K owed) plus 13% interest for 3 years. Fully paid out, fully clean.</span></div>
+    <div class="vd-pt"><span class="vd-num">05</span><span>The hold strategy makes sense for an OZ investor with a capital gains problem to shelter — that is not our position as GP partners. The tax benefit belongs to the outside equity investor, not to us. We get no OZ benefit from holding.</span></div>
+    <div class="vd-pt"><span class="vd-num">06</span><span>36 months from now, we can close this deal, collect our GP split, and be underway on the next project. 10 years from now, we're still managing this asset and watching the pref investor cash checks.</span></div>
+  </div>
+</div>
+
+</div>
+
+<div class="foot">
+  <div class="fl"><span class="flw">Vantage Point</span><div class="flr"></div><span class="fli">Investments</span></div>
+  <div class="fd">Prepared for Robert Pedro · GP partner discussion · Confidential · All figures from SSOT v3.5.5 and Build &amp; Hold proforma v4.4 · For discussion only — not a securities offering · rob@vpiflorida.com · Cape Coral, FL</div>
+</div>
+
+</div>
+</body>
+</html>
